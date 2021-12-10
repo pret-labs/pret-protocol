@@ -37,7 +37,9 @@ task('sidechain:mainnet', 'Deploy market at sidechain')
     await DRE.run('full-deploy-weth-gateway', { pool: POOL_NAME });
 
     console.log('6. Initialize lending pool');
-    await DRE.run('full:initialize-lending-pool', { pool: POOL_NAME });
+    // await DRE.run('full:initialize-lending-pool', { pool: POOL_NAME });
+    // the original script failed for some weird reasons, switch to run dev script
+    await DRE.run('dev:initialize-lending-pool', { pool: POOL_NAME });
 
     if (verify) {
       printContracts();

@@ -44,6 +44,8 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
     } = poolConfig;
     const mockTokens = await getAllMockedTokens();
     const allTokenAddresses = getAllTokenAddresses(mockTokens);
+    // console.log(allTokenAddresses);
+    // return;
 
     const addressesProvider = await getLendingPoolAddressesProvider();
 
@@ -70,6 +72,7 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
       pool,
       verify
     );
+    console.log('dev init 1');
     await configureReservesByHelper(ReservesConfig, protoPoolReservesAddresses, testHelpers, admin);
 
     const collateralManager = await deployLendingPoolCollateralManager(verify);

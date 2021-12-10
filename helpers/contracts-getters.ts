@@ -40,6 +40,7 @@ import { DRE, getDb, notFalsyOrZeroAddress, omit } from './misc-utils';
 import { eContractid, PoolConfiguration, tEthereumAddress, TokenContractId } from './types';
 
 export const getFirstSigner = async () => (await getEthersSigners())[0];
+export const getSigner = async (i: number) => (await getEthersSigners())[i];
 
 export const getLendingPoolAddressesProvider = async (address?: tEthereumAddress) => {
   return await LendingPoolAddressesProviderFactory.connect(
@@ -51,6 +52,8 @@ export const getLendingPoolAddressesProvider = async (address?: tEthereumAddress
   );
 };
 export const getLendingPoolConfiguratorProxy = async (address?: tEthereumAddress) => {
+  console.log('getLendingPoolConfiguratorProxy');
+  console.log(await getDb().get(`${eContractid.LendingPoolConfigurator}.${DRE.network.name}`).value());
   return await LendingPoolConfiguratorFactory.connect(
     address ||
       (
@@ -210,11 +213,21 @@ export const getPairsTokenAggregator = (
     getQuoteCurrencies(oracleQuoteCurrency)
   );
 
+  console.log('aggregators addresses', aggregatorsAddresses);
+  console.log('assetsWithoutQuoteCurrency', assetsWithoutQuoteCurrency);
+
   const pairs = Object.entries(assetsWithoutQuoteCurrency).map(([tokenSymbol, tokenAddress]) => {
+    console.log('tokenSymbol', tokenSymbol);
+    console.log('tokenAddress', tokenAddress);
     //if (true/*tokenSymbol !== 'WETH' && tokenSymbol !== 'ETH' && tokenSymbol !== 'LpWETH'*/) {
     const aggregatorAddressIndex = Object.keys(aggregatorsAddresses).findIndex(
       (value) => value === tokenSymbol
     );
+    const t = Object.entries(aggregatorsAddresses);
+    console.log('t', t);
+    console.log('aggregatorAddressIndex', aggregatorAddressIndex);
+    const x = t[aggregatorAddressIndex];
+    console.log(x);
     const [, aggregatorAddress] = (
       Object.entries(aggregatorsAddresses) as [string, tEthereumAddress][]
     )[aggregatorAddressIndex];

@@ -25,8 +25,8 @@ export const MaticConfig: IMaticConfiguration = {
     USDT: strategyUSDT,
     WBTC: strategyWBTC,
     WETH: strategyWETH,
-    WMATIC: strategyMATIC,
-    AAVE: strategyAAVE,
+    // WMATIC: strategyMATIC,
+    // AAVE: strategyAAVE,
   },
   ReserveAssets: {
     [ePolygonNetwork.matic]: {
@@ -40,7 +40,7 @@ export const MaticConfig: IMaticConfiguration = {
     },
     [ePolygonNetwork.mumbai]: {
       // Mock tokens with a simple "mint" external function, except wmatic
-      DAI: '0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F',
+      DAI:  '0xe37e09b65443B3ad75bA53ECbeE45AF88B00fEBA',
       USDC: '0x2058A9D7613eEE744279e3856Ef0eAda5FCbaA7e',
       USDT: '0xBD21A10F619BE90d6066c941b04e340841F1F989',
       WBTC: '0x0d787a4a1548f673ed375445535a6c7A1EE56180',
