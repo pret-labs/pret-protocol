@@ -160,7 +160,7 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '',
+    [eAuroraNetwork.aurora]: '0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74',
     // [ePolygonNetwork.mumbai]: '0xd41aE58e803Edf4304334acCE4DC4Ec34a63C644',
     // [ePolygonNetwork.matic]: '0x357D51124f59836DeD84c8a1730D72B749d8BC23',
   },
