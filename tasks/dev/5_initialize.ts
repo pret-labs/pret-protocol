@@ -46,62 +46,60 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
     } = poolConfig;
     const mockTokens = await getAllMockedTokens();
     const allTokenAddresses = getAllTokenAddresses(mockTokens);
-    // console.log(allTokenAddresses);
-    // return;
 
     const addressesProvider = await getLendingPoolAddressesProvider();
 
-    // const protoPoolReservesAddresses = <{ [symbol: string]: tEthereumAddress }>(
-    //   filterMapBy(allTokenAddresses, (key: string) => !key.includes('UNI_'))
-    // );
+    const protoPoolReservesAddresses = <{ [symbol: string]: tEthereumAddress }>(
+      filterMapBy(allTokenAddresses, (key: string) => !key.includes('UNI_'))
+    );
 
-    // const testHelpers = await deployAaveProtocolDataProvider(addressesProvider.address, verify);
+    const testHelpers = await deployAaveProtocolDataProvider(addressesProvider.address, verify);
 
-    // const admin = await addressesProvider.getPoolAdmin();
+    const admin = await addressesProvider.getPoolAdmin();
 
-    // const treasuryAddress = await getTreasuryAddress(poolConfig);
+    const treasuryAddress = await getTreasuryAddress(poolConfig);
 
-    // await initReservesByHelper(
-    //   ReservesConfig,
-    //   protoPoolReservesAddresses,
-    //   ATokenNamePrefix,
-    //   StableDebtTokenNamePrefix,
-    //   VariableDebtTokenNamePrefix,
-    //   SymbolPrefix,
-    //   admin,
-    //   treasuryAddress,
-    //   ZERO_ADDRESS,
-    //   pool,
-    //   verify
-    // );
-    // console.log('dev init 1');
-    // await configureReservesByHelper(ReservesConfig, protoPoolReservesAddresses, testHelpers, admin);
+    await initReservesByHelper(
+      ReservesConfig,
+      protoPoolReservesAddresses,
+      ATokenNamePrefix,
+      StableDebtTokenNamePrefix,
+      VariableDebtTokenNamePrefix,
+      SymbolPrefix,
+      admin,
+      treasuryAddress,
+      ZERO_ADDRESS,
+      pool,
+      verify
+    );
+    console.log('dev init 1');
+    await configureReservesByHelper(ReservesConfig, protoPoolReservesAddresses, testHelpers, admin);
 
-    // const collateralManager = await deployLendingPoolCollateralManager(verify);
-    // await waitForTx(
-    //   await addressesProvider.setLendingPoolCollateralManager(collateralManager.address)
-    // );
+    const collateralManager = await deployLendingPoolCollateralManager(verify);
+    await waitForTx(
+      await addressesProvider.setLendingPoolCollateralManager(collateralManager.address)
+    );
 
-    // const mockFlashLoanReceiver = await deployMockFlashLoanReceiver(
-    //   addressesProvider.address,
-    //   verify
-    // );
-    // await insertContractAddressInDb(
-    //   eContractid.MockFlashLoanReceiver,
-    //   mockFlashLoanReceiver.address
-    // );
+    const mockFlashLoanReceiver = await deployMockFlashLoanReceiver(
+      addressesProvider.address,
+      verify
+    );
+    await insertContractAddressInDb(
+      eContractid.MockFlashLoanReceiver,
+      mockFlashLoanReceiver.address
+    );
 
-    // await deployWalletBalancerProvider(verify);
+    await deployWalletBalancerProvider(verify);
 
-    // await insertContractAddressInDb(eContractid.AaveProtocolDataProvider, testHelpers.address);
+    await insertContractAddressInDb(eContractid.AaveProtocolDataProvider, testHelpers.address);
 
-    // const lendingPoolAddress = await addressesProvider.getLendingPool();
+    const lendingPoolAddress = await addressesProvider.getLendingPool();
 
-    // let gateway = getParamPerNetwork(WethGateway, network);
-    // if (!notFalsyOrZeroAddress(gateway)) {
-    //   gateway = (await getWETHGateway()).address;
-    // }
-    // await authorizeWETHGateway(gateway, lendingPoolAddress);
+    let gateway = getParamPerNetwork(WethGateway, network);
+    if (!notFalsyOrZeroAddress(gateway)) {
+      gateway = (await getWETHGateway()).address;
+    }
+    await authorizeWETHGateway(gateway, lendingPoolAddress);
 
     const incentivesController = await getParamPerNetwork(IncentivesController, network);
     const oracle = await addressesProvider.getPriceOracle();

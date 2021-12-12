@@ -29,7 +29,8 @@ task('sidechain:mainnet', 'Deploy market at sidechain')
     await DRE.run('full:deploy-lending-pool', { pool: POOL_NAME });
 
     console.log('3. Deploy oracles');
-    await DRE.run('full:deploy-oracles', { pool: POOL_NAME });
+    // await DRE.run('full:deploy-oracles', { pool: POOL_NAME });
+    await DRE.run('dev:deploy-oracles', { pool: POOL_NAME });
 
     console.log('4. Deploy Data Provider');
     await DRE.run('full:data-provider', { pool: POOL_NAME });
