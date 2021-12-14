@@ -41,7 +41,7 @@ export const AmmConfig: IAmmConfiguration = {
     USDT: strategyUSDT,
     WBTC: strategyWBTC,
     WNEAR: strategyWNEAR,
-    AURORA: strategyAURORA,
+    // AURORA: strategyAURORA,
     // UniDAIWETH: strategyDAIWETH,
     // UniWBTCWETH: strategyWBTCWETH,
     // UniAAVEWETH: strategyAAVEWETH,

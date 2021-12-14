@@ -26,7 +26,7 @@ export const AuroraConfig: IAuroraConfiguration = {
     WBTC: strategyWBTC,
     WETH: strategyWETH,
     WNEAR: strategyWNEAR,
-    AURORA: strategyAURORA,
+    // AURORA: strategyAURORA,
   },
   // TODO aurora
   ReserveAssets: {
@@ -37,7 +37,7 @@ export const AuroraConfig: IAuroraConfiguration = {
       WBTC: '0xb85eF37F8C6F2B785237533522924079a187CA47',
       WETH: '0xC41AcA9718C2Fbb342FdacC1E3d15066E36871c4',
       WNEAR: '0xFF8CE9eFEd7675828A6E0A819B7732C32A92f3Fb',
-      AURORA: '0x22d7f6390F723741bf5a315d7302b01992678902',
+      // AURORA: '0x22d7f6390F723741bf5a315d7302b01992678902',
     },
   },
 };

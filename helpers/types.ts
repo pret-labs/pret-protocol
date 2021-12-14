@@ -4,7 +4,12 @@ export interface SymbolMap<T> {
   [symbol: string]: T;
 }
 
-export type eNetwork = eEthereumNetwork | ePolygonNetwork | eXDaiNetwork | eAvalancheNetwork | eAuroraNetwork;
+export type eNetwork =
+  | eEthereumNetwork
+  | ePolygonNetwork
+  | eXDaiNetwork
+  | eAvalancheNetwork
+  | eAuroraNetwork;
 
 export enum eEthereumNetwork {
   buidlerevm = 'buidlerevm',
@@ -43,7 +48,7 @@ export enum EthereumNetworkNames {
   xdai = 'xdai',
   avalanche = 'avalanche',
   fuji = 'fuji',
-  aurora = 'aurora'
+  aurora = 'aurora',
 }
 
 export enum AavePools {
@@ -51,7 +56,7 @@ export enum AavePools {
   matic = 'matic',
   amm = 'amm',
   avalanche = 'avalanche',
-  aurora = 'aurora'
+  aurora = 'aurora',
 }
 
 export enum eContractid {
@@ -216,8 +221,8 @@ export interface iAssetCommon<T> {
   [key: string]: T;
 }
 export interface iAssetBase<T> {
-  WNEAR: T,
-  AURORA: T,
+  WNEAR: T;
+  AURORA: T;
   WETH: T;
   DAI: T;
   // TUSD: T;
@@ -267,34 +272,22 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  | 'WNEAR'
-  | 'AURORA'
-  | 'DAI'
-  | 'USDC'
-  | 'USDT'
-  | 'WBTC'
-  | 'WETH'
+  'WNEAR' | 'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH'
 >;
 
 export type iLpPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  | 'WNEAR'
-  | 'AURORA'
-  | 'DAI'
-  | 'USDC'
-  | 'USDT'
-  | 'WBTC'
-  | 'WETH'
+  'WNEAR' | 'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH'
 >;
 
 export type iMaticPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' 
+  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH'
 >;
 
 export type iXDAIPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' 
+  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH'
 >;
 
 export type iAvalanchePoolAssets<T> = Pick<
@@ -304,7 +297,7 @@ export type iAvalanchePoolAssets<T> = Pick<
 
 export type iAuroraPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  'WETH' | 'DAI' | 'USDT' | 'WBTC' | 'USDC' | 'WNEAR' | 'AURORA'
+  'WETH' | 'DAI' | 'USDT' | 'WBTC' | 'USDC' | 'WNEAR'
 >;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;

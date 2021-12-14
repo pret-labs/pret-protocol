@@ -135,7 +135,7 @@ export const CommonsConfig: ICommonConfiguration = {
       WBTC: ZERO_ADDRESS,
       USD: ZERO_ADDRESS,
       WNEAR: ZERO_ADDRESS,
-      AURORA: ZERO_ADDRESS,
+      // AURORA: ZERO_ADDRESS,
     },
   },
   ReserveAssets: {

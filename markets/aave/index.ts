@@ -55,7 +55,7 @@ export const AaveConfig: IAaveConfiguration = {
     WBTC: strategyWBTC,
     WETH: strategyWETH,
     WNEAR: strategyWNEAR,
-    AURORA: strategyAURORA,
+    // AURORA: strategyAURORA,
     // YFI: strategyYFI,
     // ZRX: strategyZRX,
     // xSUSHI: strategyXSUSHI,
