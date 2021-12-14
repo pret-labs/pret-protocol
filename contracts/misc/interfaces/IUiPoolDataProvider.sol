@@ -80,7 +80,7 @@ interface IUiPoolDataProvider {
 
   function incentivesController() external view returns (IAaveIncentivesController);
 
-  function getSimpleReservesData(ILendingPoolAddressesProvider provider)
+  function getReservesData(ILendingPoolAddressesProvider provider)
     external
     view
     returns (
@@ -98,7 +98,7 @@ interface IUiPoolDataProvider {
     );
 
   // generic method with full data
-  function getReservesData(ILendingPoolAddressesProvider provider, address user)
+  function getFullReservesData(ILendingPoolAddressesProvider provider, address user)
     external
     view
     returns (

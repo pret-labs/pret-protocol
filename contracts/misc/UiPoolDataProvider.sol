@@ -61,7 +61,7 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
     return lendingPool.getReservesList();
   }
 
-  function getSimpleReservesData(ILendingPoolAddressesProvider provider)
+  function getReservesData(ILendingPoolAddressesProvider provider)
     public
     view
     override
@@ -230,7 +230,7 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
     return (userReservesData, userUnclaimedRewards);
   }
 
-  function getReservesData(ILendingPoolAddressesProvider provider, address user)
+  function getFullReservesData(ILendingPoolAddressesProvider provider, address user)
     external
     view
     override
