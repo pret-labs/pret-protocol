@@ -63,9 +63,9 @@ interface IUiPoolDataProvider {
     uint256 principalStableDebt;
     uint256 stableBorrowLastUpdateTimestamp;
     // incentives
-    uint256 aTokenincentivesUserIndex;
-    uint256 vTokenincentivesUserIndex;
-    uint256 sTokenincentivesUserIndex;
+    // uint256 aTokenincentivesUserIndex;
+    // uint256 vTokenincentivesUserIndex;
+    // uint256 sTokenincentivesUserIndex;
   }
 
   struct IncentivesControllerData {
@@ -93,8 +93,8 @@ interface IUiPoolDataProvider {
     external
     view
     returns (
-      UserReserveData[] memory,
-      uint256 // user unclaimed rewards
+      UserReserveData[] memory
+      // uint256 // user unclaimed rewards
     );
 
   // generic method with full data
