@@ -9,6 +9,8 @@ import {
 } from '../../helpers/types';
 import { deployUiPoolDataProvider } from '../../helpers/contracts-deployments';
 import { exit } from 'process';
+import { getAaveOracle } from '../../helpers/contracts-getters';
+import { CommonsConfig } from '../../markets/aurora/commons';
 
 task(`deploy-${eContractid.UiPoolDataProvider}`, `Deploys the UiPoolDataProvider contract`)
   .addFlag('verify', 'Verify UiPoolDataProvider contract via Etherscan API.')
@@ -18,6 +20,7 @@ task(`deploy-${eContractid.UiPoolDataProvider}`, `Deploys the UiPoolDataProvider
       throw new Error('INVALID_CHAIN_ID');
     }
     const network = localBRE.network.name;
+    const aaveoracle = await getAaveOracle();
 
     const addressesByNetwork: {
       [key: string]: { incentivesController: string; aaveOracle: string };
@@ -47,8 +50,9 @@ task(`deploy-${eContractid.UiPoolDataProvider}`, `Deploys the UiPoolDataProvider
         aaveOracle: '0xdC336Cd4769f4cC7E9d726DA53e6d3fC710cEB89',
       },
       [eAuroraNetwork.aurora]: {
-        incentivesController: '0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74',
-        aaveOracle: '0xe2875f73beA0F72d452bBCB2940A2E99B3175AF5',
+        // incentivesController: '0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74',
+        incentivesController: CommonsConfig.IncentivesController['aurora'],
+        aaveOracle: aaveoracle.address,
       },
     };
     const supportedNetworks = Object.keys(addressesByNetwork);
