@@ -40,7 +40,8 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
         console.log('\tDeploying new lending pool implementation & libraries...');
         const lendingPoolImpl = await deployLendingPool(verify);
         lendingPoolImplAddress = lendingPoolImpl.address;
-        await lendingPoolImpl.initialize(addressesProvider.address);
+        const txn = await lendingPoolImpl.initialize(addressesProvider.address);
+        await waitForTx(txn);
       }
       console.log('\tSetting lending pool implementation with address:', lendingPoolImplAddress);
       // Set lending pool impl to Address provider

@@ -11,7 +11,7 @@ import { waitForTx } from '../../helpers/misc-utils';
 task('dev:price', 'Get price from oracle').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
   const mockTokens = await getAllMockedTokens();
-  const tokenList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WETH'];
+  const tokenList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WETH', 'WBTC'];
   const aaveOracle = await getAaveOracle();
 
   for (const t of tokenList) {
