@@ -1,5 +1,6 @@
 import { task } from 'hardhat/config';
 import {
+  eAuroraNetwork,
   eAvalancheNetwork,
   eContractid,
   eEthereumNetwork,
@@ -44,6 +45,10 @@ task(`deploy-${eContractid.UiPoolDataProvider}`, `Deploys the UiPoolDataProvider
       [eAvalancheNetwork.avalanche]: {
         incentivesController: '0x01D83Fe6A10D2f2B7AF17034343746188272cAc9',
         aaveOracle: '0xdC336Cd4769f4cC7E9d726DA53e6d3fC710cEB89',
+      },
+      [eAuroraNetwork.aurora]: {
+        incentivesController: '0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74',
+        aaveOracle: '0xe2875f73beA0F72d452bBCB2940A2E99B3175AF5',
       },
     };
     const supportedNetworks = Object.keys(addressesByNetwork);

@@ -61,7 +61,7 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
     return lendingPool.getReservesList();
   }
 
-  function getSimpleReservesData(ILendingPoolAddressesProvider provider)
+  function getReservesData(ILendingPoolAddressesProvider provider)
     public
     view
     override
@@ -142,13 +142,13 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
           reserveData.aEmissionPerSecond,
           reserveData.aIncentivesLastUpdateTimestamp
         ) = incentivesController.getAssetData(reserveData.aTokenAddress);
-     
+
         (
           reserveData.sTokenIncentivesIndex,
           reserveData.sEmissionPerSecond,
           reserveData.sIncentivesLastUpdateTimestamp
         ) = incentivesController.getAssetData(reserveData.stableDebtTokenAddress);
-     
+
         (
           reserveData.vTokenIncentivesIndex,
           reserveData.vEmissionPerSecond,
@@ -169,7 +169,7 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
     external
     view
     override
-    returns (UserReserveData[] memory, uint256)
+    returns (UserReserveData[] memory)
   {
     ILendingPool lendingPool = ILendingPool(provider.getLendingPool());
     address[] memory reserves = lendingPool.getReservesList();
@@ -181,20 +181,20 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
     for (uint256 i = 0; i < reserves.length; i++) {
       DataTypes.ReserveData memory baseData = lendingPool.getReserveData(reserves[i]);
       // incentives
-      if (address(0) != address(incentivesController)) {
-        userReservesData[i].aTokenincentivesUserIndex = incentivesController.getUserAssetData(
-          user,
-          baseData.aTokenAddress
-        );
-        userReservesData[i].vTokenincentivesUserIndex = incentivesController.getUserAssetData(
-          user,
-          baseData.variableDebtTokenAddress
-        );
-        userReservesData[i].sTokenincentivesUserIndex = incentivesController.getUserAssetData(
-          user,
-          baseData.stableDebtTokenAddress
-        );
-      }
+      // if (address(0) != address(incentivesController)) {
+      //   userReservesData[i].aTokenincentivesUserIndex = incentivesController.getUserAssetData(
+      //     user,
+      //     baseData.aTokenAddress
+      //   );
+      //   userReservesData[i].vTokenincentivesUserIndex = incentivesController.getUserAssetData(
+      //     user,
+      //     baseData.variableDebtTokenAddress
+      //   );
+      //   userReservesData[i].sTokenincentivesUserIndex = incentivesController.getUserAssetData(
+      //     user,
+      //     baseData.stableDebtTokenAddress
+      //   );
+      // }
       // user reserve data
       userReservesData[i].underlyingAsset = reserves[i];
       userReservesData[i].scaledATokenBalance = IAToken(baseData.aTokenAddress).scaledBalanceOf(
@@ -227,10 +227,10 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
       userUnclaimedRewards = incentivesController.getUserUnclaimedRewards(user);
     }
 
-    return (userReservesData, userUnclaimedRewards);
+    return (userReservesData);
   }
 
-  function getReservesData(ILendingPoolAddressesProvider provider, address user)
+  function getFullReservesData(ILendingPoolAddressesProvider provider, address user)
     external
     view
     override
@@ -315,14 +315,14 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
           reserveData.aTokenIncentivesIndex,
           reserveData.aEmissionPerSecond,
           reserveData.aIncentivesLastUpdateTimestamp
-        ) = incentivesController.getAssetData(reserveData.aTokenAddress); 
-     
+        ) = incentivesController.getAssetData(reserveData.aTokenAddress);
+
         (
           reserveData.sTokenIncentivesIndex,
           reserveData.sEmissionPerSecond,
           reserveData.sIncentivesLastUpdateTimestamp
         ) = incentivesController.getAssetData(reserveData.stableDebtTokenAddress);
-     
+
         (
           reserveData.vTokenIncentivesIndex,
           reserveData.vEmissionPerSecond,
@@ -332,20 +332,20 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
 
       if (user != address(0)) {
         // incentives
-        if (address(0) != address(incentivesController)) {
-          userReservesData[i].aTokenincentivesUserIndex = incentivesController.getUserAssetData(
-            user,
-            reserveData.aTokenAddress
-          );
-          userReservesData[i].vTokenincentivesUserIndex = incentivesController.getUserAssetData(
-            user,
-            reserveData.variableDebtTokenAddress
-          );
-          userReservesData[i].sTokenincentivesUserIndex = incentivesController.getUserAssetData(
-            user,
-            reserveData.stableDebtTokenAddress
-          );
-        }
+        // if (address(0) != address(incentivesController)) {
+        //   userReservesData[i].aTokenincentivesUserIndex = incentivesController.getUserAssetData(
+        //     user,
+        //     reserveData.aTokenAddress
+        //   );
+        //   userReservesData[i].vTokenincentivesUserIndex = incentivesController.getUserAssetData(
+        //     user,
+        //     reserveData.variableDebtTokenAddress
+        //   );
+        //   userReservesData[i].sTokenincentivesUserIndex = incentivesController.getUserAssetData(
+        //     user,
+        //     reserveData.stableDebtTokenAddress
+        //   );
+        // }
         // user reserve data
         userReservesData[i].underlyingAsset = reserveData.underlyingAsset;
         userReservesData[i].scaledATokenBalance = IAToken(reserveData.aTokenAddress)

@@ -51,6 +51,7 @@ import {
   WETH9MockedFactory,
   WETHGatewayFactory,
   FlashLiquidationAdapterFactory,
+  UiIncentiveDataProviderFactory,
 } from '../types';
 import {
   withSaveAndVerify,
@@ -66,7 +67,7 @@ import { MintableDelegationERC20 } from '../types/MintableDelegationERC20';
 import { readArtifact as buidlerReadArtifact } from '@nomiclabs/buidler/plugins';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { LendingPoolLibraryAddresses } from '../types/LendingPoolFactory';
-import { UiPoolDataProvider } from '../types';
+import { UiPoolDataProvider, UiIncentiveDataProvider } from '../types';
 import { eNetwork } from './types';
 
 export const deployUiPoolDataProvider = async (
@@ -81,6 +82,14 @@ export const deployUiPoolDataProvider = async (
   }
   return instance;
 };
+
+export const deployUiIncentiveDataProvider = async (verify?: boolean) =>
+  withSaveAndVerify(
+    await new UiIncentiveDataProviderFactory(await getFirstSigner()).deploy(),
+    eContractid.UiIncentiveDataProvider,
+    [],
+    verify
+  );
 
 const readArtifact = async (id: string) => {
   if (DRE.network.name === eEthereumNetwork.buidlerevm) {
