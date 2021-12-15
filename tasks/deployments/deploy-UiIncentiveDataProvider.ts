@@ -18,6 +18,6 @@ task(
 
     const uiIncentiveDataProvider = await deployUiIncentiveDataProvider(verify);
 
-    console.log('UiPoolDataProvider deployed at:', uiIncentiveDataProvider.address);
-    console.log(`\tFinished UiPoolDataProvider deployment`);
+    console.log('UiIncentiveDataProvider deployed at:', uiIncentiveDataProvider.address);
+    console.log(`\tFinished UiIncentiveDataProvider deployment`);
   });
