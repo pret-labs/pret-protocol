@@ -163,7 +163,9 @@ export const initReservesByHelper = async (
       console.log('configurator', configurator.address);
       console.log('init params');
       console.log(chunkedInitInputParams[chunkIndex]);
-      const tx = await configurator.connect(signer).batchInitReserve(chunkedInitInputParams[chunkIndex]);
+      const tx = await configurator
+        .connect(signer)
+        .batchInitReserve(chunkedInitInputParams[chunkIndex]);
       console.log('cp2');
       const tx3 = await waitForTx(tx);
       console.log('cp3');
@@ -291,6 +293,7 @@ export const configureReservesByHelper = async (
         await atokenAndRatesDeployer.configureReserves(chunkedInputParams[chunkIndex])
       );
       console.log(`  - Init for: ${chunkedSymbols[chunkIndex].join(', ')}`);
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
     // Set deployer back as admin
     await waitForTx(await addressProvider.setPoolAdmin(admin));

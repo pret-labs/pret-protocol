@@ -2,7 +2,7 @@ import { ethers } from 'ethers';
 import { task } from 'hardhat/config';
 import { getAllMockedTokens, getLendingPool, getSigner } from '../../helpers/contracts-getters';
 import { waitForTx } from '../../helpers/misc-utils';
-import { LendingPool } from '../../types';
+import { LendingPool, UiPoolDataProvider } from '../../types';
 
 const amount = (a: string) => {
   return ethers.utils.parseUnits(a);
@@ -31,9 +31,21 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
   const user2BorrowAmount = amount('1');
 
   // user 1 approve
+  console.log('pool address', lendingPool.address);
   await waitForTx(await token1.connect(user1).approve(lendingPool.address, user1DepositAmount));
 
   console.log('user1 approved token1');
+
+  // test
+  await waitForTx(
+    await lendingPool.connect(user1).try_deposit_1(token1.address, user1DepositAmount, user1Addr, 0)
+  );
+  console.log('test 1 passed');
+
+  await waitForTx(
+    await lendingPool.connect(user1).try_deposit_2(token1.address, user1DepositAmount, user1Addr, 0)
+  );
+  console.log('test 2 passed');
 
   const user1Token1Balance = await token1.balanceOf(user1Addr);
   console.log('user1 token1 bal', user1Token1Balance.toString());

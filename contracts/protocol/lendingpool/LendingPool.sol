@@ -128,6 +128,31 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     emit Deposit(asset, msg.sender, onBehalfOf, amount, referralCode);
   }
 
+  function try_deposit_1(
+    address asset,
+    uint256 amount,
+    address onBehalfOf,
+    uint16 referralCode
+  ) external whenNotPaused {
+    DataTypes.ReserveData storage reserve = _reserves[asset];
+
+    ValidationLogic.validateDeposit(reserve, amount);
+  }
+
+  function try_deposit_2(
+    address asset,
+    uint256 amount,
+    address onBehalfOf,
+    uint16 referralCode
+  ) external whenNotPaused {
+    DataTypes.ReserveData storage reserve = _reserves[asset];
+
+    address aToken = reserve.aTokenAddress;
+
+    reserve.updateState();
+    reserve.updateInterestRates(asset, aToken, amount, 0);
+  }
+
   /**
    * @dev Withdraws an `amount` of underlying asset from the reserve, burning the equivalent aTokens owned
    * E.g. User has 100 aUSDC, calls withdraw() and receives 100 USDC, burning the 100 aUSDC
