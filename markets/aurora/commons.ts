@@ -138,12 +138,12 @@ export const CommonsConfig: ICommonConfiguration = {
     //   // AURORA: ZERO_ADDRESS,
     // },
     [eAuroraNetwork.aurora]: {
-      DAI: '0x4Cec45fe8E68a841A94D63e62afe9F4B32D5836A',
-      USDC: '0x7A2f8ff226BfebF6E35F4213C3E49f84d65118e4',
-      USDT: '0xfCd326C53374520A77886531EB4626868cCEa4d7',
-      WBTC: '0xA1f440b2Df4b6a92a4Afb7CA8f24c922F1AAFF01',
-      USD: '0x12e1c6B5760E0326CDafb9b2B6fEAE7093490523',
-      WNEAR: '0xe71682fd26aEfFe60179c276C2f6B5e8e3ccDFe0',
+      DAI: '0x14508361B4873664414B18A23aBDC0DbCd7a2eA6',
+      USDC: '0xFA0c6aDbBA8fa934da8B79De30B99c93241103c8',
+      USDT: '0x3bbe11caBaCd0a2a281770CE60e8B387AA0A7618',
+      WBTC: '0x1506Fd79D27197C70eBeF72f9ef29D5ad1209BD2',
+      USD: '0x01fEdD69b55eE2401fB63F7be820558680f0BFB9',
+      WNEAR: '0x381B77A14BBD4Fef244763d59BEF228761926d02',
     },
   },
   ReserveAssets: {
@@ -155,7 +155,7 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: ZERO_ADDRESS,
+    [eAuroraNetwork.aurora]: '0xC41AcA9718C2Fbb342FdacC1E3d15066E36871c4',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora

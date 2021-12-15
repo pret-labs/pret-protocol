@@ -8,7 +8,7 @@ task('dev:mint', 'Mint some stable coins').setAction(async ({}, localBRE) => {
   const mockTokens = await getAllMockedTokens();
   const mintList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WETH'];
 
-  const signer = await getSigner(0);
+  const signer = await getSigner(1);
   console.log(await signer.getAddress());
 
   for (const t of mintList) {
