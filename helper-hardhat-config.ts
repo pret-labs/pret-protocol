@@ -56,7 +56,8 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [eXDaiNetwork.xdai]: 'https://rpc.xdaichain.com/',
   [eAvalancheNetwork.avalanche]: 'https://api.avax.network/ext/bc/C/rpc',
   [eAvalancheNetwork.fuji]: 'https://api.avax-test.network/ext/bc/C/rpc',
-  [eAuroraNetwork.aurora]: 'https://mainnet.aurora.dev',
+  [eAuroraNetwork.aurora]: 'http://localhost:8545',
+  // [eAuroraNetwork.aurora]: 'https://mainnet.aurora.dev',
 };
 
 export const NETWORKS_DEFAULT_GAS: iParamsPerNetwork<number> = {
@@ -72,7 +73,8 @@ export const NETWORKS_DEFAULT_GAS: iParamsPerNetwork<number> = {
   [eXDaiNetwork.xdai]: 1 * GWEI,
   [eAvalancheNetwork.avalanche]: 225 * GWEI,
   [eAvalancheNetwork.fuji]: 85 * GWEI,
-  [eAuroraNetwork.aurora]: 0 * GWEI,
+  [eAuroraNetwork.aurora]: 10 * GWEI,
+  // [eAuroraNetwork.aurora]: 0 * GWEI,
 };
 
 export const BLOCK_TO_FORK: iParamsPerNetwork<number | undefined> = {

@@ -138,12 +138,12 @@ export const CommonsConfig: ICommonConfiguration = {
     //   // AURORA: ZERO_ADDRESS,
     // },
     [eAuroraNetwork.aurora]: {
-      DAI: '0x1d12b3888594Ce50C55A73bE64B1d75Cdda465af',
-      USDC: '0x121a53e663c2A7bb1dCDe0C1A6462ED8cc343F4B',
-      USDT: '0x5E89E6Cc7B38A49B5B81Fe468DE34e379fcf8875',
-      WBTC: '0x74efA4a7720e468fa1B4Fc03208E8A26c6089229',
-      USD: '0x26d5E3d4CD105BD00210a3Cdf1F55200A857576C',
-      WNEAR: '0x49007e99DD227D5D2639f7456816a8f00fBFe159',
+      DAI: '0x9D3f23d5552b8E5365eB9e7412809A108d7b7760',
+      USDC: '0x53810e4c71BC89d39Df76754c069680B26b20c3d',
+      USDT: '0x0DC2aBf690cD4038c09864ef21d2b18623e96Ea6',
+      WBTC: '0x763908b214743025BF637ABF919132C3FBa8232f',
+      USD: '0x934654853Bd7DaE1D3491E38F9Bf909a17F03eD4',
+      WNEAR: '0xBf1Ab70f941Dde0d0e03C8fc5A0b3854149CE39E',
     },
   },
   ReserveAssets: {
@@ -155,20 +155,21 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0xC41AcA9718C2Fbb342FdacC1E3d15066E36871c4',
+    [eAuroraNetwork.aurora]: '0x543B666128Dc017EA2a4260b24d5014F218b1d10',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+    [eAuroraNetwork.aurora]: '0x543B666128Dc017EA2a4260b24d5014F218b1d10',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: ZERO_ADDRESS,
+    [eAuroraNetwork.aurora]: '0xFcF081AC8186cb3B81F7FA021D980E962B6CfDD8',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74',
+    // [eAuroraNetwork.aurora]: '0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74',
+    [eAuroraNetwork.aurora]: '0x6FaF3062A457fFE8D9E2F1017974905802E21C01', // hardhat
     // [ePolygonNetwork.mumbai]: '0xd41aE58e803Edf4304334acCE4DC4Ec34a63C644',
     // [ePolygonNetwork.matic]: '0x357D51124f59836DeD84c8a1730D72B749d8BC23',
   },

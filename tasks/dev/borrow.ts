@@ -4,6 +4,9 @@ import { getAllMockedTokens, getLendingPool, getSigner } from '../../helpers/con
 import { waitForTx } from '../../helpers/misc-utils';
 import { LendingPool, UiPoolDataProvider } from '../../types';
 
+const GWEI = 1000 * 1000 * 1000;
+const gasPrice = 15 * GWEI;
+
 const amount = (a: string) => {
   return ethers.utils.parseUnits(a);
 };
@@ -37,15 +40,15 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
   console.log('user1 approved token1');
 
   // test
-  await waitForTx(
-    await lendingPool.connect(user1).try_deposit_1(token1.address, user1DepositAmount, user1Addr, 0)
-  );
-  console.log('test 1 passed');
+  // await waitForTx(
+  //   await lendingPool.connect(user1).try_deposit_1(token1.address, user1DepositAmount, user1Addr, 0)
+  // );
+  // console.log('test 1 passed');
 
-  await waitForTx(
-    await lendingPool.connect(user1).try_deposit_2(token1.address, user1DepositAmount, user1Addr, 0)
-  );
-  console.log('test 2 passed');
+  // await waitForTx(
+  //   await lendingPool.connect(user1).try_deposit_2(token1.address, user1DepositAmount, user1Addr, 0)
+  // );
+  // console.log('test 2 passed');
 
   const user1Token1Balance = await token1.balanceOf(user1Addr);
   console.log('user1 token1 bal', user1Token1Balance.toString());
@@ -54,14 +57,12 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
 
   // user 1 deposit
   await waitForTx(
-    await lendingPool.connect(user1).deposit(token1.address, user1DepositAmount, user1Addr, 0)
+    await lendingPool.connect(user1).deposit(token1.address, user1DepositAmount, user1Addr, 0, {
+      gasLimit: 1000000,
+      gasPrice,
+    })
   );
   console.log('user1 deposited DAI');
-
-  // print user 1 data
-  // const user1Data = await getUserData(lendingPool, user1Addr);
-  // console.log('user1 data now:');
-  // console.log(user1Data);
 
   // user 2 approve
   await waitForTx(await token2.connect(user2).approve(lendingPool.address, user2DepositAmount));
@@ -69,14 +70,12 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
 
   // user 2 deposit
   await waitForTx(
-    await lendingPool.connect(user2).deposit(token2.address, user2DepositAmount, user2Addr, 0)
+    await lendingPool.connect(user2).deposit(token2.address, user2DepositAmount, user2Addr, 0, {
+      gasLimit: 1000000,
+      gasPrice,
+    })
   );
   console.log('user2 deposited');
-
-  // print user 2 data
-  // let user2Data = await getUserData(lendingPool, user2Addr);
-  // console.log('user2 data now:');
-  // console.log(user2Data);
 
   // user 2 borrow
   await waitForTx(
@@ -85,7 +84,11 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
       user2BorrowAmount,
       2, // interest mode
       0, // referral
-      user2Addr
+      user2Addr,
+      {
+        gasLimit: 1000000,
+        gasPrice,
+      }
     )
   );
   console.log('user2 borrowed');

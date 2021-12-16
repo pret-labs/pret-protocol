@@ -530,13 +530,19 @@ export const deployWETHGateway = async (args: [tEthereumAddress], verify?: boole
     verify
   );
 
+const GWEI = 1000 * 1000 * 1000;
+const gasPrice = 15 * GWEI; // TODO aurora
+
 export const authorizeWETHGateway = async (
   wethGateWay: tEthereumAddress,
   lendingPool: tEthereumAddress
 ) =>
   await new WETHGatewayFactory(await getFirstSigner())
     .attach(wethGateWay)
-    .authorizeLendingPool(lendingPool);
+    .authorizeLendingPool(lendingPool, {
+      gasLimit: 1000000,
+      gasPrice: gasPrice,
+    });
 
 export const deployMockStableDebtToken = async (
   args: [tEthereumAddress, tEthereumAddress, tEthereumAddress, string, string, string],
