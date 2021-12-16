@@ -119,24 +119,6 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   ChainlinkAggregator: {
-    // [ePolygonNetwork.matic]: {
-    //   AAVE: '0xbE23a3AA13038CfC28aFd0ECe4FdE379fE7fBfc4',
-    //   DAI: '0xFC539A559e170f848323e19dfD66007520510085',
-    //   USDC: '0xefb7e6be8356cCc6827799B6A7348eE674A80EaE',
-    //   USDT: '0xf9d5AAC6E5572AEFa6bd64108ff86a222F69B64d',
-    //   WBTC: '0xA338e0492B2F944E9F8C0653D3AD1484f2657a37',
-    //   WMATIC: '0x327e23A4855b6F663a28c5161541d69Af8973302',
-    //   USD: '0xF9680D99D6C9589e2a93a78A04A279e509205945',
-    // },
-    // [eAuroraNetwork.aurora]: {
-    //   DAI: ZERO_ADDRESS,
-    //   USDC: ZERO_ADDRESS,
-    //   USDT: ZERO_ADDRESS,
-    //   WBTC: ZERO_ADDRESS,
-    //   USD: ZERO_ADDRESS,
-    //   WNEAR: ZERO_ADDRESS,
-    //   // AURORA: ZERO_ADDRESS,
-    // },
     [eAuroraNetwork.aurora]: {
       DAI: '0x9D3f23d5552b8E5365eB9e7412809A108d7b7760',
       USDC: '0x53810e4c71BC89d39Df76754c069680B26b20c3d',
@@ -155,7 +137,7 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0x543B666128Dc017EA2a4260b24d5014F218b1d10',
+    [eAuroraNetwork.aurora]: '0xC41AcA9718C2Fbb342FdacC1E3d15066E36871c4',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
@@ -164,7 +146,7 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0xFcF081AC8186cb3B81F7FA021D980E962B6CfDD8',
+    [eAuroraNetwork.aurora]: '0x0fdf186ac2cdB035783dA1E3a84BB38bE4BCb166',
   },
   // TODO aurora
   IncentivesController: {

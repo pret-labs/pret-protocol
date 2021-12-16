@@ -17,6 +17,10 @@ The following components are required by AAVE, but not handled by this project.
   https://github.com/pret-labs/oracle-provider-node       
   run: `npm run start`
 
+4. Deploy AaveCollector
+   `npx hardhat --network aurora dev:collector`      
+   Put address in commons.ts
+
 ### B. Deploy Pret (AAVE)
 1. Update IncentivesController address in `markets/aurora/commons.ts`
 2. Update price oracle addresses in `markets/aurora/commons.ts`

@@ -4,7 +4,7 @@ import { getAllMockedTokens, getMintableERC20, getSigner } from '../../helpers/c
 import { waitForTx } from '../../helpers/misc-utils';
 
 const GWEI = 1000 * 1000 * 1000;
-const gasPrice = 15 * GWEI;
+const gasPrice = 0 * GWEI;
 
 task('dev:mint', 'Mint some stable coins').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');

@@ -531,7 +531,7 @@ export const deployWETHGateway = async (args: [tEthereumAddress], verify?: boole
   );
 
 const GWEI = 1000 * 1000 * 1000;
-const gasPrice = 15 * GWEI; // TODO aurora
+const gasPrice = 0 * GWEI; // TODO aurora
 
 export const authorizeWETHGateway = async (
   wethGateWay: tEthereumAddress,

@@ -68,6 +68,8 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
         await addressesProvider.setLendingPoolConfiguratorImpl(lendingPoolConfiguratorImplAddress)
       );
 
+      await new Promise((r) => setTimeout(r, 500));
+
       const lendingPoolConfiguratorProxy = await getLendingPoolConfiguratorProxy(
         await addressesProvider.getLendingPoolConfigurator()
       );
