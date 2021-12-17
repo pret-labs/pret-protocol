@@ -137,20 +137,20 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0xC41AcA9718C2Fbb342FdacC1E3d15066E36871c4',
+    [eAuroraNetwork.aurora]: '0xe37e09b65443B3ad75bA53ECbeE45AF88B00fEBA',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0x543B666128Dc017EA2a4260b24d5014F218b1d10',
+    [eAuroraNetwork.aurora]: '0xe37e09b65443B3ad75bA53ECbeE45AF88B00fEBA',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0x0fdf186ac2cdB035783dA1E3a84BB38bE4BCb166',
+    [eAuroraNetwork.aurora]: '0xF29866B2356db2546a41909fa46F5299A67bfEee',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x7492b42685E1c1d3FdD6a2e2DA4675dAfe9CEbeA',
+    [eAuroraNetwork.aurora]: '0x6FaF3062A457fFE8D9E2F1017974905802E21C01',
     // [ePolygonNetwork.mumbai]: '0xd41aE58e803Edf4304334acCE4DC4Ec34a63C644',
     // [ePolygonNetwork.matic]: '0x357D51124f59836DeD84c8a1730D72B749d8BC23',
   },

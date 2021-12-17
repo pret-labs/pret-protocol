@@ -63,6 +63,7 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
         '\tSetting lending pool configurator implementation with address:',
         lendingPoolConfiguratorImplAddress
       );
+      await new Promise((r) => setTimeout(r, 500));
       // Set lending pool conf impl to Address Provider
       await waitForTx(
         await addressesProvider.setLendingPoolConfiguratorImpl(lendingPoolConfiguratorImplAddress)

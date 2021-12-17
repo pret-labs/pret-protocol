@@ -28,5 +28,7 @@ The following components are required by AAVE, but not handled by this project.
 4. Update WETH address in `markets/aurora/commons.ts`
 5. Delete all entries in `deployed-contracts.json`, if mock tokens are needed you can leave these entries there.
 6. `npm run aurora:full:migration`
-7. In order to use the protocol, the pool need to be unpaused.
-8. `npx hardhat --network aurora dev:unpause`
+7. `npm run aurora:deployUIProvider`
+8. `npm run aurora:deployUIIncentivesProvider`
+9. In order to use the protocol, the pool need to be unpaused.
+10. `npx hardhat --network aurora dev:unpause`
