@@ -5,21 +5,26 @@
 ### A. Prerequisite 
 The following components are required by AAVE, but not handled by this project.      
 
+0. Grab Treasury Token Address. You can deploy a mock ERC20 token for test purpose:
+  `npx hardhat --network aurora dev:deploy-mock-tokens`
+
 1. IncentivesController       
+  Use the treasury token above, update in `deploy-incentives-impl` task.
   https://github.com/pret-labs/incentives-controller/tree/aurora      
   deploy: `npx hardhat --network aurora deploy-incentives-impl`
 
 2. Price Oracles
-  https://github.com/pret-labs/price-oracle      
-  Contracts already deployed, see readme for addresses.
+  https://github.com/pret-labs/price-oracle              
+  See readme for instructions.
 
-3. Run Price Oracle Nodes
+3. Run Price Oracle Nodes         
+  Update `appconfig.js` with oracle addresses above     
   https://github.com/pret-labs/oracle-provider-node       
   run: `npm run start`
 
 4. Deploy AaveCollector
    `npx hardhat --network aurora dev:collector`      
-   Put address in commons.ts
+   Put address in `markets/aurora/commons.ts`
 
 ### B. Deploy Pret (AAVE)
 1. Update IncentivesController address in `markets/aurora/commons.ts`

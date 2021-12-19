@@ -29,8 +29,8 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
   console.log('user1', user1Addr);
   console.log('user2', user2Addr);
 
-  const user1DepositAmount = amount('50');
-  const user2DepositAmount = amount('5');
+  const user1DepositAmount = amount('50'); // 50 DAI = 5 WNEAR
+  const user2DepositAmount = amount('5'); // 5 WNAR = 50 DAI
   const user2BorrowAmount = amount('1');
 
   // user 1 approve
@@ -38,17 +38,6 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
   await waitForTx(await token1.connect(user1).approve(lendingPool.address, user1DepositAmount));
 
   console.log('user1 approved token1');
-
-  // test
-  // await waitForTx(
-  //   await lendingPool.connect(user1).try_deposit_1(token1.address, user1DepositAmount, user1Addr, 0)
-  // );
-  // console.log('test 1 passed');
-
-  // await waitForTx(
-  //   await lendingPool.connect(user1).try_deposit_2(token1.address, user1DepositAmount, user1Addr, 0)
-  // );
-  // console.log('test 2 passed');
 
   const user1Token1Balance = await token1.balanceOf(user1Addr);
   console.log('user1 token1 bal', user1Token1Balance.toString());
@@ -93,9 +82,7 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
   );
   console.log('user2 borrowed');
 
-  // user2Data = await getUserData(lendingPool, user2Addr);
-  // console.log('user2 data now:');
-  // console.log(user2Data);
+  // user 2 repay
 });
 
 async function getUserData(pool: LendingPool, userAddr: string) {

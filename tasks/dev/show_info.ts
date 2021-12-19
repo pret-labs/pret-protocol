@@ -1,5 +1,7 @@
+import { ethers } from 'ethers';
 import { task } from 'hardhat/config';
 import { getLendingPool, getSigner } from '../../helpers/contracts-getters';
+import { UiIncentiveDataProviderFactory } from '../../types';
 
 task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
