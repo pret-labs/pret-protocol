@@ -51,6 +51,7 @@ import {
   WETH9MockedFactory,
   WETHGatewayFactory,
   FlashLiquidationAdapterFactory,
+  UiPoolDataProviderFactory,
   UiIncentiveDataProviderFactory,
 } from '../types';
 import {
@@ -71,17 +72,32 @@ import { UiPoolDataProvider, UiIncentiveDataProvider } from '../types';
 import { eNetwork } from './types';
 
 export const deployUiPoolDataProvider = async (
-  [incentivesController, aaveOracle]: [tEthereumAddress, tEthereumAddress],
+  chainlinkAggregatorProxy: string,
+  chainlinkEthUsdAggregatorProxy: string,
   verify?: boolean
-) => {
-  const id = eContractid.UiPoolDataProvider;
-  const args: string[] = [incentivesController, aaveOracle];
-  const instance = await deployContract<UiPoolDataProvider>(id, args);
-  if (verify) {
-    await verifyContract(id, instance, args);
-  }
-  return instance;
-};
+) =>
+  withSaveAndVerify(
+    await new UiPoolDataProviderFactory(await getFirstSigner()).deploy(
+      chainlinkAggregatorProxy,
+      chainlinkEthUsdAggregatorProxy
+    ),
+    eContractid.UiPoolDataProvider,
+    [chainlinkAggregatorProxy, chainlinkEthUsdAggregatorProxy],
+    verify
+  );
+
+// export const deployUiPoolDataProvider = async (
+//   [incentivesController, aaveOracle]: [tEthereumAddress, tEthereumAddress],
+//   verify?: boolean
+// ) => {
+//   const id = eContractid.UiPoolDataProvider;
+//   const args: string[] = [incentivesController, aaveOracle];
+//   const instance = await deployContract<UiPoolDataProvider>(id, args);
+//   if (verify) {
+//     await verifyContract(id, instance, args);
+//   }
+//   return instance;
+// };
 
 export const deployUiIncentiveDataProvider = async (verify?: boolean) =>
   withSaveAndVerify(
