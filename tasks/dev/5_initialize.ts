@@ -20,7 +20,11 @@ import { tEthereumAddress, AavePools, eContractid } from '../../helpers/types';
 import { waitForTx, filterMapBy, notFalsyOrZeroAddress } from '../../helpers/misc-utils';
 import { configureReservesByHelper, initReservesByHelper } from '../../helpers/init-helpers';
 import { getAllTokenAddresses } from '../../helpers/mock-helpers';
-import { ZERO_ADDRESS } from '../../helpers/constants';
+import {
+  chainlinkAggregatorProxy,
+  chainlinkEthUsdAggregatorProxy,
+  ZERO_ADDRESS,
+} from '../../helpers/constants';
 import {
   getAllMockedTokens,
   getLendingPoolAddressesProvider,
@@ -106,9 +110,9 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
     console.log('inc', incentivesController);
     console.log('oracle', oracle);
 
-    const uiPoolDataProvider = await deployUiPoolDataProvider(
-      [incentivesController, oracle],
-      verify
-    );
+    const aggrProxy = chainlinkAggregatorProxy[network];
+    const ethAggrProxy = chainlinkEthUsdAggregatorProxy[network];
+
+    const uiPoolDataProvider = await deployUiPoolDataProvider(aggrProxy, ethAggrProxy, verify);
     console.log('UiPoolDataProvider at:', uiPoolDataProvider.address);
   });

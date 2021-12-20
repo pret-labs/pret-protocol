@@ -43,6 +43,9 @@ task('sidechain:mainnet', 'Deploy market at sidechain')
     // the original script failed for some weird reasons, switch to run dev script
     // await DRE.run('dev:initialize-lending-pool', { pool: POOL_NAME });
 
+    console.log('7. Deploy UiIncentiveDataProvider');
+    await DRE.run('deploy-UiIncentiveDataProvider');
+
     if (verify) {
       printContracts();
       console.log('7. Veryfing contracts');
