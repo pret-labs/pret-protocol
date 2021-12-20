@@ -112,25 +112,18 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     ValidationLogic.validateDeposit(reserve, amount);
-    console.log('cp1');
 
     address aToken = reserve.aTokenAddress;
 
     reserve.updateState();
-    console.log('cp2');
 
     reserve.updateInterestRates(asset, aToken, amount, 0);
-    console.log('cp3');
 
     IERC20(asset).safeTransferFrom(msg.sender, aToken, amount);
-    console.log('cp4');
 
     bool isFirstDeposit = IAToken(aToken).mint(onBehalfOf, amount, reserve.liquidityIndex);
-    console.log('cp5');
-
     if (isFirstDeposit) {
       _usersConfig[onBehalfOf].setUsingAsCollateral(reserve.id, true);
-      console.log('cp6');
       emit ReserveUsedAsCollateralEnabled(asset, onBehalfOf);
     }
 

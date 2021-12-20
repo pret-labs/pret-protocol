@@ -82,7 +82,17 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
   );
   console.log('user2 borrowed');
 
+  // user 2 approve to repay
+  await waitForTx(await token1.connect(user2).approve(lendingPool.address, user2BorrowAmount));
+  console.log('user2 approved for repay');
+
   // user 2 repay
+  await waitForTx(
+    await lendingPool
+      .connect(user2)
+      .repay(token1.address, user2BorrowAmount, 2, await user2.getAddress())
+  );
+  console.log('user2 repaid');
 });
 
 async function getUserData(pool: LendingPool, userAddr: string) {
