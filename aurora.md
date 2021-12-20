@@ -10,7 +10,7 @@ The following components are required by AAVE, but not handled by this project.
 
 2. Deploy IncentivesController       
   https://github.com/pret-labs/incentives-controller/tree/aurora      
-  deploy: `npx hardhat --network aurora deploy-pull-rewards-incentives --rewardToken <addr> --rewardsVault <addr>`
+  deploy: `npx hardhat --network aurora deploy-pull-rewards-incentives --token <addr> --vault <addr>`
 
 3. Approve IncentivesController with all rewards token    
   `CONTROLLER=xxx npx hardhat --network aurora dev:dao --approve`
@@ -26,16 +26,14 @@ The following components are required by AAVE, but not handled by this project.
 
 6. Deploy AaveCollector
    `npx hardhat --network aurora dev:collector`      
-   Put address in `markets/aurora/commons.ts`
 
 ### B. Deploy Pret (AAVE)
 1. Update IncentivesController address in `markets/aurora/commons.ts`
 2. Update price oracle addresses in `markets/aurora/commons.ts`
 3. Update reserve assets addresses in `markets/aurora/index.ts`
-4. Update WETH address in `markets/aurora/commons.ts`
-5. Delete all entries in `deployed-contracts.json`, if mock tokens are needed you can leave these entries there.
-6. `npm run aurora:full:migration`
-7. `npm run aurora:deployUIProvider`
-8. `npm run aurora:deployUIIncentivesProvider`
-9. In order to use the protocol, the pool need to be unpaused.
-10. `npx hardhat --network aurora dev:unpause`
+4. Update treasury address in `markets/aurora/commons.ts` with AaveCollector address
+5. Update WETH address in `markets/aurora/commons.ts`
+6. Delete all entries in `deployed-contracts.json`, if mock tokens are needed you can leave these entries there.
+7. `npm run aurora:full:migration`
+8. In order to use the protocol, the pool need to be unpaused:    
+  `npx hardhat --network aurora dev:unpause`
