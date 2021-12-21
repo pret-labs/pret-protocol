@@ -33,7 +33,7 @@ task('dev:dao', 'Deploy Pret DAO Token')
       if (!controller) {
         throw new Error('missing controller');
       }
-      const tokenAddress = await getDb().get('PretDAOToken.aurora').value();
+      const tokenAddress = await getDb().get('PretDAO.aurora').value();
       const token = await PretDAOTokenFactory.connect(tokenAddress.address, signer);
 
       await waitForTx(await token.connect(signer).approve(controller, totalSupply));

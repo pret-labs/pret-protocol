@@ -19,12 +19,13 @@ export const CommonsConfig: ICommonConfiguration = {
   VariableDebtTokenNamePrefix: 'Pret Aurora Market variable debt',
   SymbolPrefix: 'p',
   ProviderId: 0, // Overriden in index.ts
-  OracleQuoteCurrency: 'ETH',
+  OracleQuoteCurrency: 'USD',
   OracleQuoteUnit: oneEther.toString(),
   ProtocolGlobalParams: {
     TokenDistributorPercentageBase: '10000',
     MockUsdPriceInWei: '5848466240000000',
-    UsdAddress: '0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96',
+    UsdAddress: '0x0000000000000000000000000000000000000000',
+    // UsdAddress: '0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96',
     NilAddress: '0x0000000000000000000000000000000000000000',
     OneAddress: '0x0000000000000000000000000000000000000001',
     AaveReferral: '0',
@@ -120,12 +121,13 @@ export const CommonsConfig: ICommonConfiguration = {
   // TODO aurora
   ChainlinkAggregator: {
     [eAuroraNetwork.aurora]: {
-      DAI: '0x9D3f23d5552b8E5365eB9e7412809A108d7b7760',
-      USDC: '0x53810e4c71BC89d39Df76754c069680B26b20c3d',
-      USDT: '0x0DC2aBf690cD4038c09864ef21d2b18623e96Ea6',
-      WBTC: '0x763908b214743025BF637ABF919132C3FBa8232f',
-      USD: '0x934654853Bd7DaE1D3491E38F9Bf909a17F03eD4',
-      WNEAR: '0xBf1Ab70f941Dde0d0e03C8fc5A0b3854149CE39E',
+      DAI: '0x7DCabc4d0f82299637F38Ed2703bA6144e9355cC',
+      USDC: '0x934654853Bd7DaE1D3491E38F9Bf909a17F03eD4',
+      USDT: '0x763908b214743025BF637ABF919132C3FBa8232f',
+      WBTC: '0x4671Baf82Eed3d5aa53Af5477f727840f7fE1e62',
+      USD: '0xe328DF89F4C7027890a9C4A68D75002959Ff406c',
+      WNEAR: '0x75F987Edc7F9B9745e5C6397813476F9B40b45CB',
+      WETH: '0xE659e788219864A02665200c3406935F9Acc0998',
     },
   },
   ReserveAssets: {
@@ -137,19 +139,19 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0xB5AE3e2883934457cb593793f034b401867e1372',
+    [eAuroraNetwork.aurora]: '0x8F74537e8164E81ff83B965e914Fd9721978FC1b',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0xB5AE3e2883934457cb593793f034b401867e1372',
+    [eAuroraNetwork.aurora]: '0x8F74537e8164E81ff83B965e914Fd9721978FC1b',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0xD63259B15E88DFDC994A90104a2c7226CE3ECa69',
+    [eAuroraNetwork.aurora]: '0x27a5882A9AB09f3fa9917C820C0E5D0527719c25',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x136154A0bA8E44B90BC4Ac7B84b1E310630b1B5c',
+    [eAuroraNetwork.aurora]: '0x53810e4c71BC89d39Df76754c069680B26b20c3d',
   },
 };
