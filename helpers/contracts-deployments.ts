@@ -482,8 +482,12 @@ export const deployAllMockTokens = async (verify?: boolean) => {
   const protoConfigData = getReservesConfigByPool(AavePools.proto);
 
   for (const tokenSymbol of Object.keys(TokenContractId)) {
-    let decimals = '18';
+    // skip WETH
+    if (tokenSymbol === 'WETH') {
+      continue;
+    }
 
+    let decimals = '18';
     let configData = (<any>protoConfigData)[tokenSymbol];
 
     tokens[tokenSymbol] = await deployMintableERC20(

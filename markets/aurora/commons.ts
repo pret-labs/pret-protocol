@@ -139,12 +139,12 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0x8F74537e8164E81ff83B965e914Fd9721978FC1b',
+    [eAuroraNetwork.aurora]: '0xb5450e8D453a2fF5dE5255cf332B22A51c4D0cFA',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0x8F74537e8164E81ff83B965e914Fd9721978FC1b',
+    [eAuroraNetwork.aurora]: '0xb5450e8D453a2fF5dE5255cf332B22A51c4D0cFA',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
