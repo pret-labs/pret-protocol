@@ -6,7 +6,7 @@ import { waitForTx } from '../../helpers/misc-utils';
 task('dev:transfer', 'Transfer coins').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
   const mockTokens = await getAllMockedTokens();
-  const tokenList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WETH', 'WBTC'];
+  const tokenList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WBTC'];
 
   const signer = await getSigner(0);
   const receipt = process.env.RECEIPT;

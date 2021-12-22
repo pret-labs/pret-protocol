@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 import { task } from 'hardhat/config';
-import { getLendingPool, getSigner } from '../../helpers/contracts-getters';
+import { getAllMockedTokens, getLendingPool, getSigner } from '../../helpers/contracts-getters';
 import { UiIncentiveDataProviderFactory } from '../../types';
 
 task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) => {
@@ -11,15 +11,22 @@ task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) =>
   const reservesList = await pool.getReservesList();
   console.log('reservesList', reservesList);
 
+  const mockTokens = await getAllMockedTokens();
+  const mockTokenMap = {};
+  for (const [key, value] of Object.entries(mockTokens)) {
+    mockTokenMap[value.address] = key;
+  }
   for (const reserve of reservesList) {
     const reserveData = await pool.getReserveData(reserve);
-    console.log(`\nReserve Data: ${reserve}`);
-    console.log(reserveData);
+    console.log(`\nReserve Data: ${mockTokenMap[reserve] || 'WETH'}`);
+    console.log(`Reserve address: ${reserve}`);
+    console.log(`aToken address: ${reserveData.aTokenAddress}`);
+    console.log(`vToken address: ${reserveData.variableDebtTokenAddress}`);
   }
 
   const userAccount = await pool.getUserAccountData(await signer0.getAddress());
-  console.log('\nuser account data:');
-  console.log(userAccount);
+  console.log('\nuser account data OK');
+  // console.log(userAccount);
 
   const paused = await pool.paused();
   console.log('\n paused', paused);
