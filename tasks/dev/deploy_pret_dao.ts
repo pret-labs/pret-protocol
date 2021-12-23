@@ -12,7 +12,7 @@ task('dev:dao', 'Deploy Pret DAO Token')
   .setAction(async ({ approve }, localBRE) => {
     await localBRE.run('set-DRE');
     const signer = await getFirstSigner();
-    const totalSupply = ethers.utils.parseEther('100000000');
+    const totalSupply = ethers.utils.parseEther('1000000');
 
     if (!approve) {
       // deploy for first time
