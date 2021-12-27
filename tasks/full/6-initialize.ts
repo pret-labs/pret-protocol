@@ -94,6 +94,8 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
         '\tSetting AaveProtocolDataProvider at AddressesProvider at id: 0x01',
         collateralManagerAddress
       );
+
+      await new Promise((r) => setTimeout(r, 500));
       const aaveProtocolDataProvider = await getAaveProtocolDataProvider();
       await waitForTx(
         await addressesProvider.setAddress(
@@ -102,10 +104,12 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
         )
       );
 
+      await new Promise((r) => setTimeout(r, 500));
       await deployWalletBalancerProvider(verify);
 
       const aggrProxy = chainlinkAggregatorProxy[network];
       const ethAggrProxy = chainlinkEthUsdAggregatorProxy[network];
+      await new Promise((r) => setTimeout(r, 500));
       const uiPoolDataProvider = await deployUiPoolDataProvider(aggrProxy, ethAggrProxy, verify);
       console.log('UiPoolDataProvider deployed at:', uiPoolDataProvider.address);
 
