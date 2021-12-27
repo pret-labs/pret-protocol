@@ -21,13 +21,13 @@ task('dev:mint', 'Mint some stable coins').setAction(async ({}, localBRE) => {
     const token = mockTokens[t];
     console.log('token address', token.address);
     await waitForTx(
-      await token.connect(signer0).mint(ethers.utils.parseUnits('1000'), {
+      await token.connect(signer0).mint(ethers.utils.parseUnits('100000'), {
         gasLimit: 1000000,
         gasPrice: gasPrice,
       })
     );
     await waitForTx(
-      await token.connect(signer1).mint(ethers.utils.parseUnits('1000'), {
+      await token.connect(signer1).mint(ethers.utils.parseUnits('100000'), {
         gasLimit: 1000000,
         gasPrice: gasPrice,
       })
