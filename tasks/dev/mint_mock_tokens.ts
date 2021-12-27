@@ -1,6 +1,11 @@
 import { ethers } from 'ethers';
 import { task } from 'hardhat/config';
-import { getAllMockedTokens, getMintableERC20, getSigner } from '../../helpers/contracts-getters';
+import {
+  getAllMockedTokens,
+  getMintableERC20,
+  getSigner,
+  getWETHMocked,
+} from '../../helpers/contracts-getters';
 import { waitForTx } from '../../helpers/misc-utils';
 
 const GWEI = 1000 * 1000 * 1000;
@@ -9,7 +14,11 @@ const gasPrice = 0 * GWEI;
 task('dev:mint', 'Mint some stable coins').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
   const mockTokens = await getAllMockedTokens();
-  const mintList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WBTC'];
+  const mintList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WBTC', 'WETH'];
+
+  // WETH
+  const weth = await getWETHMocked();
+  mockTokens['WETH'] = weth as any;
 
   const signer0 = await getSigner(0);
   const signer1 = await getSigner(1);
