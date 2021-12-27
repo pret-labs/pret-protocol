@@ -152,6 +152,6 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0xBcbfCb1B4ddc44a02924B9ADcb55E87F1c8a7F8e',
+    [eAuroraNetwork.aurora]: '0x6a6d11ad7bBE4aE0447C30d7A495F7C8D7C20d56',
   },
 };
