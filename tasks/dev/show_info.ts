@@ -1,6 +1,12 @@
 import { ethers } from 'ethers';
 import { task } from 'hardhat/config';
-import { getAllMockedTokens, getLendingPool, getSigner } from '../../helpers/contracts-getters';
+import {
+  getAllMockedTokens,
+  getLendingPool,
+  getLendingPoolAddressesProvider,
+  getSigner,
+  getWETHGateway,
+} from '../../helpers/contracts-getters';
 import { UiIncentiveDataProviderFactory } from '../../types';
 
 task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) => {
@@ -26,12 +32,19 @@ task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) =>
     console.log(`Reserve address: ${reserve}`);
     console.log(`aToken address: ${reserveData.aTokenAddress}`);
     console.log(`vToken address: ${reserveData.variableDebtTokenAddress}`);
+    console.log(reserveData);
   }
 
-  const userAccount = await pool.getUserAccountData(await signer0.getAddress());
+  const userAccount = await pool.getUserAccountData(await signer1.getAddress());
   console.log('\nuser account data OK');
-  // console.log(userAccount);
+  console.log(userAccount);
+  console.log('totalCollateralETH', userAccount.totalCollateralETH.toString());
+  console.log('availableBorrowsETH', userAccount.availableBorrowsETH.toString());
 
   const paused = await pool.paused();
   console.log('\n paused', paused);
+
+  const wethGateway = await getWETHGateway();
+  const wethAddr = await wethGateway.getWETHAddress();
+  console.log(`weth addr: ${wethAddr}`);
 });

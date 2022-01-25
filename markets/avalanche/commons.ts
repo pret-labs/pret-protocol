@@ -29,8 +29,8 @@ export const CommonsConfig: ICommonConfiguration = {
     NilAddress: '0x0000000000000000000000000000000000000000',
     OneAddress: '0x0000000000000000000000000000000000000001',
     AaveReferral: '0',
+    
   },
-
   // ----------------
   // COMMON PROTOCOL PARAMS ACROSS POOLS AND NETWORKS
   // ----------------

@@ -30,7 +30,7 @@ The following components are required by AAVE, but not handled by this project.
 ### B. Deploy Pret (AAVE)
 1. Update IncentivesController address in `markets/aurora/commons.ts`
 2. Update price oracle addresses in `markets/aurora/commons.ts`
-3. Update ETH price oracle address in `helpers/constancts.ts`
+3. Update ETH price oracle address in `helpers/constants.ts`
 3. Update reserve assets addresses in `markets/aurora/index.ts`
 4. Update treasury address in `markets/aurora/commons.ts` with AaveCollector address
 5. Update WETH address in `markets/aurora/commons.ts`
