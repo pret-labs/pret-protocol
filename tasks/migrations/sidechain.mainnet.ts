@@ -21,30 +21,35 @@ task('sidechain:mainnet', 'Deploy market at sidechain')
 
     console.log('0. Deploy address provider registry');
     await DRE.run('full:deploy-address-provider-registry', { pool: POOL_NAME });
+    console.log('Done 0. Deploy address provider registry');
 
     console.log('1. Deploy address provider');
     await DRE.run('full:deploy-address-provider', { pool: POOL_NAME, skipRegistry });
+    console.log('Done 1. Deploy address provider');
 
     console.log('2. Deploy lending pool');
     await DRE.run('full:deploy-lending-pool', { pool: POOL_NAME });
+    console.log('Done 2. Deploy lending pool');
 
     console.log('3. Deploy oracles');
     await DRE.run('full:deploy-oracles', { pool: POOL_NAME });
-    // await DRE.run('dev:deploy-oracles', { pool: POOL_NAME });
+    console.log('Done 3. Deploy oracles');
 
     console.log('4. Deploy Data Provider');
     await DRE.run('full:data-provider', { pool: POOL_NAME });
+    console.log('Done 4. Deploy Data Provider');
 
     console.log('5. Deploy WETH Gateway');
     await DRE.run('full-deploy-weth-gateway', { pool: POOL_NAME });
+    console.log('Done 5. Deploy WETH Gateway');
 
     console.log('6. Initialize lending pool');
     await DRE.run('full:initialize-lending-pool', { pool: POOL_NAME });
-    // the original script failed for some weird reasons, switch to run dev script
-    // await DRE.run('dev:initialize-lending-pool', { pool: POOL_NAME });
+    console.log('Done 6. Initialize lending pool');
 
     console.log('7. Deploy UiIncentiveDataProvider');
     await DRE.run('deploy-UiIncentiveDataProvider');
+    console.log('Done 7. Deploy UiIncentiveDataProvider');
 
     if (verify) {
       printContracts();

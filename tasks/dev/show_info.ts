@@ -32,7 +32,6 @@ task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) =>
     console.log(`Reserve address: ${reserve}`);
     console.log(`aToken address: ${reserveData.aTokenAddress}`);
     console.log(`vToken address: ${reserveData.variableDebtTokenAddress}`);
-    console.log(reserveData);
   }
 
   const userAccount = await pool.getUserAccountData(await signer1.getAddress());

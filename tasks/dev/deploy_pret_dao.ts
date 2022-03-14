@@ -14,6 +14,11 @@ task('dev:dao', 'Deploy Pret DAO Token')
     const signer = await getFirstSigner();
     const totalSupply = ethers.utils.parseEther('1000000');
 
+    console.log('signer', await signer.getAddress());
+    console.log('signer balance');
+    const balance = await signer.getBalance();
+    console.log(balance.toBigInt());
+
     if (!approve) {
       // deploy for first time
 

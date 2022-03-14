@@ -120,13 +120,13 @@ export const CommonsConfig: ICommonConfiguration = {
   // TODO aurora
   ChainlinkAggregator: {
     [eAuroraNetwork.aurora]: {
-      DAI: '0x0254eD2D36977B444CAebEcBE78240D1a6b11975',
-      USDC: '0x10D679fFf33A521d44c21B43882a375752FB1B08',
-      USDT: '0xFd184B978bCb008844F1b898DdB670984818bC38',
-      WBTC: '0xC20109904e9b7e021943d276E9f4846E699F3718',
-      USD: '0xafB56880d2D7270Dc3b32e60B85cf57c7bfFac46',
-      WNEAR: '0x200a4d6c7c946FDEF34562bC3204B82dCedcECea',
-      WETH: '0xA929fE94147e8FcA23600799451eF510d720f284',
+      DAI: '0x87C6661A5C226B6cB7d862ED6a918A278b7E76Bb',
+      USDC: '0xD7E53C36C6B8d8Db3E7deD9d7F71faDF6872643F',
+      USDT: '0x74D53775bd3a815B6F73e6e592AA75c8A2a01a2F',
+      WBTC: '0x1D5c349664AFeb9339BaB66651da060a47296ADB',
+      USD: '0x0C0F2FE767C8424A6c456DB968192df86819f406',
+      WNEAR: '0x5d8fA2609760294553F3073c29933eCD24e934c6',
+      WETH: '0xa4D67849D21d0aa0856631c7d03750B4fC8eA81E',
     },
   },
   ReserveAssets: {
@@ -138,19 +138,19 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0x4aC3d3e1E45f08957480F38AA903c563eA05B743',
+    [eAuroraNetwork.aurora]: '0xAcbc062a7dd2403a5D54f25ea132F6E7a2E5d449',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0x4aC3d3e1E45f08957480F38AA903c563eA05B743',
+    [eAuroraNetwork.aurora]: '0xAcbc062a7dd2403a5D54f25ea132F6E7a2E5d449',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0x1dd4e0D3b0Bf82BA75f3124e21bDeef02Ff073dA',
+    [eAuroraNetwork.aurora]: '0xEb4aF184af130BF863f2Ac665c4aD16006003b9d',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x4671Baf82Eed3d5aa53Af5477f727840f7fE1e62',
+    [eAuroraNetwork.aurora]: '0xFdE4709F98fc8F8f5C35BF904aEC50F1B81D6d50',
   },
 };
