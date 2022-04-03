@@ -102,7 +102,7 @@ export const CommonsConfig: ICommonConfiguration = {
   // TODO aurora
   LendingPoolCollateralManager: {
     // [ePolygonNetwork.mumbai]: '0x2A7004B21c49253ca8DF923406Fed9a02AA86Ba0',
-    // [ePolygonNetwork.matic]: '0xA39599424642D9fD35e475EF802EddF798dc555B',
+    // [ePolyAaveCollector deployed: 0xd83C5e9a0D6D521a9E23D25Df1862A23134e1803gonNetwork.matic]: '0xA39599424642D9fD35e475EF802EddF798dc555B',
     [eAuroraNetwork.aurora]: ''
   },
   TokenDistributor: {
@@ -120,13 +120,13 @@ export const CommonsConfig: ICommonConfiguration = {
   // TODO aurora
   ChainlinkAggregator: {
     [eAuroraNetwork.aurora]: {
-      DAI: '0x87C6661A5C226B6cB7d862ED6a918A278b7E76Bb',
-      USDC: '0xD7E53C36C6B8d8Db3E7deD9d7F71faDF6872643F',
-      USDT: '0x74D53775bd3a815B6F73e6e592AA75c8A2a01a2F',
-      WBTC: '0x1D5c349664AFeb9339BaB66651da060a47296ADB',
-      USD: '0x0C0F2FE767C8424A6c456DB968192df86819f406',
-      WNEAR: '0x5d8fA2609760294553F3073c29933eCD24e934c6',
-      WETH: '0xa4D67849D21d0aa0856631c7d03750B4fC8eA81E',
+      DAI: '0xE96C20C1Afd211e444D16D7C19756f5C385c3423',
+      USDC: '0x5F42C4824B144e6E7601FEcE0823cEE326bd7F4C',
+      USDT: '0x233674c8396FeDb225c649231019B53Bca4865C2',
+      WBTC: '0xD95C1596170d0cCF8Cf6BE81aB38FD9f3A74ac50',
+      USD: '0x190F924B4eF203597C93ad37bDE6b4e5b2671Df0',
+      WNEAR: '0xB5c05D6260B0C43c28dD149C1e4f8a932Ee62eBD',
+      WETH: '0x74435e491AB22c473Da94a7c9C076b24C921b741',
     },
   },
   ReserveAssets: {
@@ -138,19 +138,19 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0xAcbc062a7dd2403a5D54f25ea132F6E7a2E5d449',
+    [eAuroraNetwork.aurora]: '0x38A2b3157d529c521814E88621fE938Be421A203',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0xAcbc062a7dd2403a5D54f25ea132F6E7a2E5d449',
+    [eAuroraNetwork.aurora]: '0x38A2b3157d529c521814E88621fE938Be421A203',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0xEb4aF184af130BF863f2Ac665c4aD16006003b9d',
+    [eAuroraNetwork.aurora]: '0xFD1d488029ca690eFd2B78680E82B6A4c6d76D20',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0xFdE4709F98fc8F8f5C35BF904aEC50F1B81D6d50',
+    [eAuroraNetwork.aurora]: '0x58dd09D110feCb028aDfD666217D335F39B607a4',
   },
 };

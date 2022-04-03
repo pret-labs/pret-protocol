@@ -33,6 +33,7 @@ import {
   WETH9MockedFactory,
   WETHGatewayFactory,
   FlashLiquidationAdapterFactory,
+  UiPoolDataProviderFactory,
 } from '../types';
 import { IERC20DetailedFactory } from '../types/IERC20DetailedFactory';
 import { getEthersSigners, MockTokenMap } from './contracts-helpers';
@@ -71,6 +72,14 @@ export const getLendingPool = async (address?: tEthereumAddress) =>
       (
         await getDb().get(`${eContractid.LendingPool}.${DRE.network.name}`).value()
       ).address,
+    await getFirstSigner()
+  );
+
+export const getUiPoolDataProvider = async () =>
+  await UiPoolDataProviderFactory.connect(
+    (
+      await getDb().get(`${eContractid.UiPoolDataProvider}.${DRE.network.name}`).value()
+    ).address,
     await getFirstSigner()
   );
 

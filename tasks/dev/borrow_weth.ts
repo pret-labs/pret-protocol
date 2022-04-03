@@ -35,14 +35,14 @@ task('dev:ethborrow', 'Borrow with WETH').setAction(async ({}, localBRE) => {
   console.log('user1', user1Addr);
   console.log('user2', user2Addr);
 
-  const user1DepositAmount = amount('1'); // 1 ETH = 500 NEAR
+  const user1DepositAmount = amount('0.001'); // 1 ETH = 500 NEAR
   const user2DepositAmount = amount('10'); // 10 WNAR = 0.02 ETH
-  const user2BorrowAmount = amount('0.002');
+  const user2BorrowAmount = amount('0.0001');
 
   // user 1 deposit ETH for WETH
   await waitForTx(
     await token1.deposit({
-      value: ethers.utils.parseUnits('1'),
+      value: ethers.utils.parseUnits('0.001'),
     })
   );
   console.log('user1 deposited ETH to WETH');

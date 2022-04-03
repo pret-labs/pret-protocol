@@ -15,7 +15,7 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
 
   const mockTokens = await getAllMockedTokens();
-  const token1 = mockTokens['USDC'];
+  const token1 = mockTokens['DAI'];
   const token2 = mockTokens['WNEAR'];
   console.log('token1 address', token1.address);
   console.log('token2 address', token2.address);
@@ -31,7 +31,7 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
 
   const user1DepositAmount = amount('500'); // 50 DAI = 5 WNEAR
   const user2DepositAmount = amount('10'); // 5 WNAR = 50 DAI
-  const user2BorrowAmount = amount('0.00000000001');
+  const user2BorrowAmount = amount('1');
 
   // user 1 approve
   console.log('pool address', lendingPool.address);

@@ -68,6 +68,7 @@ const getCommonNetworkConfig = (networkName: eNetwork, networkId: number) => ({
     initialIndex: 0,
     count: 20,
   },
+  timeout: 30000,
 });
 
 let forkMode;
