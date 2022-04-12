@@ -5,6 +5,7 @@ import {
   deployWalletBalancerProvider,
   deployAaveProtocolDataProvider,
   authorizeWETHGateway,
+  deployUiPoolDataProvider,
 } from '../../helpers/contracts-deployments';
 import { getParamPerNetwork } from '../../helpers/contracts-helpers';
 import { eNetwork } from '../../helpers/types';
@@ -19,7 +20,11 @@ import { tEthereumAddress, AavePools, eContractid } from '../../helpers/types';
 import { waitForTx, filterMapBy, notFalsyOrZeroAddress } from '../../helpers/misc-utils';
 import { configureReservesByHelper, initReservesByHelper } from '../../helpers/init-helpers';
 import { getAllTokenAddresses } from '../../helpers/mock-helpers';
-import { ZERO_ADDRESS } from '../../helpers/constants';
+import {
+  chainlinkAggregatorProxy,
+  chainlinkEthUsdAggregatorProxy,
+  ZERO_ADDRESS,
+} from '../../helpers/constants';
 import {
   getAllMockedTokens,
   getLendingPoolAddressesProvider,
@@ -41,6 +46,7 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
       SymbolPrefix,
       WethGateway,
       ReservesConfig,
+      IncentivesController,
     } = poolConfig;
     const mockTokens = await getAllMockedTokens();
     const allTokenAddresses = getAllTokenAddresses(mockTokens);
@@ -70,6 +76,7 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
       pool,
       verify
     );
+    console.log('dev init 1');
     await configureReservesByHelper(ReservesConfig, protoPoolReservesAddresses, testHelpers, admin);
 
     const collateralManager = await deployLendingPoolCollateralManager(verify);
@@ -97,4 +104,15 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
       gateway = (await getWETHGateway()).address;
     }
     await authorizeWETHGateway(gateway, lendingPoolAddress);
+
+    const incentivesController = await getParamPerNetwork(IncentivesController, network);
+    const oracle = await addressesProvider.getPriceOracle();
+    console.log('inc', incentivesController);
+    console.log('oracle', oracle);
+
+    const aggrProxy = chainlinkAggregatorProxy[network];
+    const ethAggrProxy = chainlinkEthUsdAggregatorProxy[network];
+
+    const uiPoolDataProvider = await deployUiPoolDataProvider(aggrProxy, ethAggrProxy, verify);
+    console.log('UiPoolDataProvider at:', uiPoolDataProvider.address);
   });

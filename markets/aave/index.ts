@@ -1,5 +1,6 @@
 import { oneRay, ZERO_ADDRESS } from '../../helpers/constants';
 import { IAaveConfiguration, eEthereumNetwork } from '../../helpers/types';
+import { strategyAURORA, strategyWNEAR } from '../aurora/reservesConfigs';
 
 import { CommonsConfig } from './commons';
 import {
@@ -35,27 +36,29 @@ export const AaveConfig: IAaveConfiguration = {
   MarketId: 'Aave genesis market',
   ProviderId: 1,
   ReservesConfig: {
-    AAVE: strategyAAVE,
-    BAT: strategyBAT,
-    BUSD: strategyBUSD,
+    // AAVE: strategyAAVE,
+    // BAT: strategyBAT,
+    // BUSD: strategyBUSD,
     DAI: strategyDAI,
-    ENJ: strategyENJ,
-    KNC: strategyKNC,
-    LINK: strategyLINK,
-    MANA: strategyMANA,
-    MKR: strategyMKR,
-    REN: strategyREN,
-    SNX: strategySNX,
-    SUSD: strategySUSD,
-    TUSD: strategyTUSD,
-    UNI: strategyUNI,
+    // ENJ: strategyENJ,
+    // KNC: strategyKNC,
+    // LINK: strategyLINK,
+    // MANA: strategyMANA,
+    // MKR: strategyMKR,
+    // REN: strategyREN,
+    // SNX: strategySNX,
+    // SUSD: strategySUSD,
+    // TUSD: strategyTUSD,
+    // UNI: strategyUNI,
     USDC: strategyUSDC,
     USDT: strategyUSDT,
     WBTC: strategyWBTC,
     WETH: strategyWETH,
-    YFI: strategyYFI,
-    ZRX: strategyZRX,
-    xSUSHI: strategyXSUSHI,
+    WNEAR: strategyWNEAR,
+    // AURORA: strategyAURORA,
+    // YFI: strategyYFI,
+    // ZRX: strategyZRX,
+    // xSUSHI: strategyXSUSHI,
   },
   ReserveAssets: {
     [eEthereumNetwork.buidlerevm]: {},

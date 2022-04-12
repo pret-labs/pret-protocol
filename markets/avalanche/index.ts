@@ -24,9 +24,9 @@ export const AvalancheConfig: IAvalancheConfiguration = {
     DAI: strategyDAI,
     USDT: strategyUSDT,
     USDC: strategyUSDC,
-    AAVE: strategyAAVE,
+    // AAVE: strategyAAVE,
     WBTC: strategyWBTC,
-    WAVAX: strategyWAVAX,
+    // WAVAX: strategyWAVAX,
   },
   ReserveAssets: {
     [eAvalancheNetwork.avalanche]: {

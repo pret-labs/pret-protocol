@@ -10,6 +10,7 @@ import { chunk, getDb, waitForTx } from './misc-utils';
 import {
   getAToken,
   getATokensAndRatesHelper,
+  getFirstSigner,
   getLendingPoolAddressesProvider,
   getLendingPoolConfiguratorProxy,
 } from './contracts-getters';
@@ -20,6 +21,7 @@ import {
 import { BigNumberish } from 'ethers';
 import { ConfigNames } from './configuration';
 import { deployRateStrategy } from './contracts-deployments';
+import { sign } from 'crypto';
 
 export const getATokenExtraParams = async (aTokenName: string, tokenAddress: tEthereumAddress) => {
   console.log(aTokenName);
@@ -151,15 +153,31 @@ export const initReservesByHelper = async (
   const chunkedInitInputParams = chunk(initInputParams, initChunks);
 
   const configurator = await getLendingPoolConfiguratorProxy();
+  const signer = await getFirstSigner();
+  configurator.connect(signer);
 
   console.log(`- Reserves initialization in ${chunkedInitInputParams.length} txs`);
   for (let chunkIndex = 0; chunkIndex < chunkedInitInputParams.length; chunkIndex++) {
-    const tx3 = await waitForTx(
-      await configurator.batchInitReserve(chunkedInitInputParams[chunkIndex])
-    );
+    try {
+      console.log('cp1', chunkIndex);
+      console.log('configurator', configurator.address);
+      console.log('init params');
+      console.log(chunkedInitInputParams[chunkIndex]);
+      const tx = await configurator
+        .connect(signer)
+        .batchInitReserve(chunkedInitInputParams[chunkIndex]);
+      console.log('cp2');
+      const tx3 = await waitForTx(tx);
+      console.log('cp3');
+      // const tx3 = await waitForTx(
+      //   await configurator.batchInitReserve(chunkedInitInputParams[chunkIndex])
+      // );
 
-    console.log(`  - Reserve ready for: ${chunkedSymbols[chunkIndex].join(', ')}`);
-    console.log('    * gasUsed', tx3.gasUsed.toString());
+      console.log(`  - Reserve ready for: ${chunkedSymbols[chunkIndex].join(', ')}`);
+      console.log('    * gasUsed', tx3.gasUsed.toString());
+    } catch (e) {
+      console.log(`skipping...`);
+    }
   }
 };
 
@@ -263,16 +281,19 @@ export const configureReservesByHelper = async (
     await waitForTx(await addressProvider.setPoolAdmin(atokenAndRatesDeployer.address));
 
     // Deploy init per chunks
-    const enableChunks = 20;
+    const enableChunks = 1;
     const chunkedSymbols = chunk(symbols, enableChunks);
     const chunkedInputParams = chunk(inputParams, enableChunks);
 
     console.log(`- Configure reserves in ${chunkedInputParams.length} txs`);
     for (let chunkIndex = 0; chunkIndex < chunkedInputParams.length; chunkIndex++) {
+      console.log('config reserve');
+      console.log(chunkedInputParams[chunkIndex]);
       await waitForTx(
         await atokenAndRatesDeployer.configureReserves(chunkedInputParams[chunkIndex])
       );
       console.log(`  - Init for: ${chunkedSymbols[chunkIndex].join(', ')}`);
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
     // Set deployer back as admin
     await waitForTx(await addressProvider.setPoolAdmin(admin));

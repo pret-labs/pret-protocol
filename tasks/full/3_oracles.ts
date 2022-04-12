@@ -42,6 +42,8 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
       const reserveAssets = await getParamPerNetwork(ReserveAssets, network);
       const chainlinkAggregators = await getParamPerNetwork(ChainlinkAggregator, network);
 
+      console.log('chainlink aggrs', chainlinkAggregators);
+
       const tokensToWatch: SymbolMap<string> = {
         ...reserveAssets,
         USD: UsdAddress,

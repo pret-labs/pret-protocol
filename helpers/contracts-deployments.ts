@@ -51,6 +51,8 @@ import {
   WETH9MockedFactory,
   WETHGatewayFactory,
   FlashLiquidationAdapterFactory,
+  UiPoolDataProviderFactory,
+  UiIncentiveDataProviderFactory,
 } from '../types';
 import {
   withSaveAndVerify,
@@ -66,21 +68,44 @@ import { MintableDelegationERC20 } from '../types/MintableDelegationERC20';
 import { readArtifact as buidlerReadArtifact } from '@nomiclabs/buidler/plugins';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { LendingPoolLibraryAddresses } from '../types/LendingPoolFactory';
-import { UiPoolDataProvider } from '../types';
+import { UiPoolDataProvider, UiIncentiveDataProvider } from '../types';
 import { eNetwork } from './types';
 
 export const deployUiPoolDataProvider = async (
-  [incentivesController, aaveOracle]: [tEthereumAddress, tEthereumAddress],
+  chainlinkAggregatorProxy: string,
+  chainlinkEthUsdAggregatorProxy: string,
   verify?: boolean
-) => {
-  const id = eContractid.UiPoolDataProvider;
-  const args: string[] = [incentivesController, aaveOracle];
-  const instance = await deployContract<UiPoolDataProvider>(id, args);
-  if (verify) {
-    await verifyContract(id, instance, args);
-  }
-  return instance;
-};
+) =>
+  withSaveAndVerify(
+    await new UiPoolDataProviderFactory(await getFirstSigner()).deploy(
+      chainlinkAggregatorProxy,
+      chainlinkEthUsdAggregatorProxy
+    ),
+    eContractid.UiPoolDataProvider,
+    [chainlinkAggregatorProxy, chainlinkEthUsdAggregatorProxy],
+    verify
+  );
+
+// export const deployUiPoolDataProvider = async (
+//   [incentivesController, aaveOracle]: [tEthereumAddress, tEthereumAddress],
+//   verify?: boolean
+// ) => {
+//   const id = eContractid.UiPoolDataProvider;
+//   const args: string[] = [incentivesController, aaveOracle];
+//   const instance = await deployContract<UiPoolDataProvider>(id, args);
+//   if (verify) {
+//     await verifyContract(id, instance, args);
+//   }
+//   return instance;
+// };
+
+export const deployUiIncentiveDataProvider = async (verify?: boolean) =>
+  withSaveAndVerify(
+    await new UiIncentiveDataProviderFactory(await getFirstSigner()).deploy(),
+    eContractid.UiIncentiveDataProvider,
+    [],
+    verify
+  );
 
 const readArtifact = async (id: string) => {
   if (DRE.network.name === eEthereumNetwork.buidlerevm) {
@@ -457,8 +482,12 @@ export const deployAllMockTokens = async (verify?: boolean) => {
   const protoConfigData = getReservesConfigByPool(AavePools.proto);
 
   for (const tokenSymbol of Object.keys(TokenContractId)) {
-    let decimals = '18';
+    // skip WETH
+    if (tokenSymbol === 'WETH') {
+      continue;
+    }
 
+    let decimals = tokenSymbol === 'USDT' || tokenSymbol === 'USDC' ? '6' : '18';
     let configData = (<any>protoConfigData)[tokenSymbol];
 
     tokens[tokenSymbol] = await deployMintableERC20(
@@ -521,13 +550,19 @@ export const deployWETHGateway = async (args: [tEthereumAddress], verify?: boole
     verify
   );
 
+const GWEI = 1000 * 1000 * 1000;
+const gasPrice = 0 * GWEI; // TODO aurora
+
 export const authorizeWETHGateway = async (
   wethGateWay: tEthereumAddress,
   lendingPool: tEthereumAddress
 ) =>
   await new WETHGatewayFactory(await getFirstSigner())
     .attach(wethGateWay)
-    .authorizeLendingPool(lendingPool);
+    .authorizeLendingPool(lendingPool, {
+      gasLimit: 1000000,
+      gasPrice: gasPrice,
+    });
 
 export const deployMockStableDebtToken = async (
   args: [tEthereumAddress, tEthereumAddress, tEthereumAddress, string, string, string],

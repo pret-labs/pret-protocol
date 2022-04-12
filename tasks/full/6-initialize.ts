@@ -16,7 +16,11 @@ import {
   getAaveProtocolDataProvider,
   getLendingPoolAddressesProvider,
 } from '../../helpers/contracts-getters';
-import { ZERO_ADDRESS } from '../../helpers/constants';
+import {
+  chainlinkAggregatorProxy,
+  chainlinkEthUsdAggregatorProxy,
+  ZERO_ADDRESS,
+} from '../../helpers/constants';
 
 task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
   .addFlag('verify', 'Verify contracts at Etherscan')
@@ -90,6 +94,8 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
         '\tSetting AaveProtocolDataProvider at AddressesProvider at id: 0x01',
         collateralManagerAddress
       );
+
+      await new Promise((r) => setTimeout(r, 500));
       const aaveProtocolDataProvider = await getAaveProtocolDataProvider();
       await waitForTx(
         await addressesProvider.setAddress(
@@ -98,12 +104,13 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
         )
       );
 
+      await new Promise((r) => setTimeout(r, 500));
       await deployWalletBalancerProvider(verify);
 
-      const uiPoolDataProvider = await deployUiPoolDataProvider(
-        [incentivesController, oracle],
-        verify
-      );
+      const aggrProxy = chainlinkAggregatorProxy[network];
+      const ethAggrProxy = chainlinkEthUsdAggregatorProxy[network];
+      await new Promise((r) => setTimeout(r, 500));
+      const uiPoolDataProvider = await deployUiPoolDataProvider(aggrProxy, ethAggrProxy, verify);
       console.log('UiPoolDataProvider deployed at:', uiPoolDataProvider.address);
 
       const lendingPoolAddress = await addressesProvider.getLendingPool();

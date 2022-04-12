@@ -4,6 +4,7 @@ import { HardhatUserConfig } from 'hardhat/types';
 // @ts-ignore
 import { accounts } from './test-wallets.js';
 import {
+  eAuroraNetwork,
   eAvalancheNetwork,
   eEthereumNetwork,
   eNetwork,
@@ -67,6 +68,7 @@ const getCommonNetworkConfig = (networkName: eNetwork, networkId: number) => ({
     initialIndex: 0,
     count: 20,
   },
+  timeout: 30000,
 });
 
 let forkMode;
@@ -105,6 +107,8 @@ const buidlerConfig: HardhatUserConfig = {
     tenderly: getCommonNetworkConfig(eEthereumNetwork.tenderly, 3030),
     matic: getCommonNetworkConfig(ePolygonNetwork.matic, 137),
     mumbai: getCommonNetworkConfig(ePolygonNetwork.mumbai, 80001),
+    // aurora: getCommonNetworkConfig(eAuroraNetwork.aurora, 31337),
+    aurora: getCommonNetworkConfig(eAuroraNetwork.aurora, 1313161554),
     xdai: getCommonNetworkConfig(eXDaiNetwork.xdai, 100),
     avalanche: getCommonNetworkConfig(eAvalancheNetwork.avalanche, 43114),
     fuji: getCommonNetworkConfig(eAvalancheNetwork.fuji, 43113),

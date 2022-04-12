@@ -1,5 +1,6 @@
 import { oneRay, ZERO_ADDRESS } from '../../helpers/constants';
 import { IAmmConfiguration, eEthereumNetwork } from '../../helpers/types';
+import { strategyAURORA, strategyWNEAR } from '../aurora/reservesConfigs';
 
 import { CommonsConfig } from './commons';
 import {
@@ -39,22 +40,24 @@ export const AmmConfig: IAmmConfiguration = {
     USDC: strategyUSDC,
     USDT: strategyUSDT,
     WBTC: strategyWBTC,
-    UniDAIWETH: strategyDAIWETH,
-    UniWBTCWETH: strategyWBTCWETH,
-    UniAAVEWETH: strategyAAVEWETH,
-    UniBATWETH: strategyBATWETH,
-    UniDAIUSDC: strategyDAIUSDC,
-    UniCRVWETH: strategyCRVWETH,
-    UniLINKWETH: strategyLINKWETH,
-    UniMKRWETH: strategyMKRWETH,
-    UniRENWETH: strategyRENWETH,
-    UniSNXWETH: strategySNXWETH,
-    UniUNIWETH: strategyUNIWETH,
-    UniUSDCWETH: strategyUSDCWETH,
-    UniWBTCUSDC: strategyWBTCUSDC,
-    UniYFIWETH: strategyYFIWETH,
-    BptWBTCWETH: strategyWBTCWETH,
-    BptBALWETH: strategyBALWETH,
+    WNEAR: strategyWNEAR,
+    // AURORA: strategyAURORA,
+    // UniDAIWETH: strategyDAIWETH,
+    // UniWBTCWETH: strategyWBTCWETH,
+    // UniAAVEWETH: strategyAAVEWETH,
+    // UniBATWETH: strategyBATWETH,
+    // UniDAIUSDC: strategyDAIUSDC,
+    // UniCRVWETH: strategyCRVWETH,
+    // UniLINKWETH: strategyLINKWETH,
+    // UniMKRWETH: strategyMKRWETH,
+    // UniRENWETH: strategyRENWETH,
+    // UniSNXWETH: strategySNXWETH,
+    // UniUNIWETH: strategyUNIWETH,
+    // UniUSDCWETH: strategyUSDCWETH,
+    // UniWBTCUSDC: strategyWBTCUSDC,
+    // UniYFIWETH: strategyYFIWETH,
+    // BptWBTCWETH: strategyWBTCWETH,
+    // BptBALWETH: strategyBALWETH,
   },
   ReserveAssets: {
     [eEthereumNetwork.buidlerevm]: {},
