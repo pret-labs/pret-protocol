@@ -36,7 +36,7 @@ task('sidechain:mainnet', 'Deploy market at sidechain')
     console.log('Done 3. Deploy oracles');
 
     console.log('4. Deploy Data Provider');
-    await DRE.run('full:data-provider', { pool: POOL_NAME });
+    await DRE.run('full:data-provider');
     console.log('Done 4. Deploy Data Provider');
 
     console.log('5. Deploy WETH Gateway');

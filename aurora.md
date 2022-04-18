@@ -5,21 +5,21 @@
 ### A. Prerequisite 
 The following components are required by AAVE, but not handled by this project.      
 
-1. Deploy reward ERC20 Token (PretDAO)      
-  `npx hardhat --network aurora dev:dao`     
+1. Grab address of WNEAR token.
 
 2. Deploy IncentivesController       
   https://github.com/pret-labs/incentives-controller/tree/aurora      
   deploy: `npx hardhat --network aurora deploy-pull-rewards-incentives --token <addr> --vault <addr>`
+  Token address is WNEAR address, vault address is the account that holds all the incentives initially.
 
 3. Approve IncentivesController with all rewards token    
-  `CONTROLLER=xxx npx hardhat --network aurora dev:dao --approve`
+  `CONTROLLER=xxx WNEAR=xxx npx hardhat --network aurora dev:approve`
 
-4. Price Oracles
+4. Price Oracles (optional)
   https://github.com/pret-labs/price-oracle              
   See readme for instructions.
 
-5. Run Price Oracle Nodes         
+5. Run Price Oracle Nodes (optional)        
   Update `appconfig.js` with oracle addresses above     
   https://github.com/pret-labs/oracle-provider-node       
   run: `npm run start`

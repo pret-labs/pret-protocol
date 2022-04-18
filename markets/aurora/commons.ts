@@ -147,10 +147,10 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0x37Bb5D3993442a99B82Cb4920c73C09E17C58951',
+    [eAuroraNetwork.aurora]: '0x114E314aED1dd117c2B91257AA52575331Ae2F95',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x71daAC29D014ED8c1b2Adb11D16D26979055E06D',
+    [eAuroraNetwork.aurora]: '0x4081A1eedB4A1c65d175bF423755039827B4288A',
   },
 };
