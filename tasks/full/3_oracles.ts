@@ -54,6 +54,11 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
         poolConfig.OracleQuoteCurrency
       );
 
+      // manually add USD
+      tokens.push('0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96');
+      // Flux USDT feed
+      aggregators.push('0x5c8C275Bb70C66330F5f60E17530f37a50E6185E');
+
       let aaveOracle: AaveOracle;
       let lendingRateOracle: LendingRateOracle;
 

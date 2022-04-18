@@ -43,6 +43,8 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
       } = poolConfig as ICommonConfiguration;
 
       const reserveAssets = await getParamPerNetwork(ReserveAssets, network);
+      console.log('reserveAssets');
+      console.log(reserveAssets);
       const incentivesController = await getParamPerNetwork(IncentivesController, network);
       const addressesProvider = await getLendingPoolAddressesProvider();
 

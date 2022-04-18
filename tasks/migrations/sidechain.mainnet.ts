@@ -47,9 +47,13 @@ task('sidechain:mainnet', 'Deploy market at sidechain')
     await DRE.run('full:initialize-lending-pool', { pool: POOL_NAME });
     console.log('Done 6. Initialize lending pool');
 
-    console.log('7. Deploy UiIncentiveDataProvider');
+    console.log('7. Deploy ChainLinkSourceRegistry');
+    await DRE.run('dev:chainlink');
+    console.log('Done 7. ChainLinkSourceRegistry');
+
+    console.log('8. Deploy UiIncentiveDataProvider');
     await DRE.run('deploy-UiIncentiveDataProvider');
-    console.log('Done 7. Deploy UiIncentiveDataProvider');
+    console.log('Done 8. Deploy UiIncentiveDataProvider');
 
     if (verify) {
       printContracts();

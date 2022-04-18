@@ -40,6 +40,10 @@ task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) =>
   console.log('totalCollateralETH', userAccount.totalCollateralETH.toString());
   console.log('availableBorrowsETH', userAccount.availableBorrowsETH.toString());
 
+  const wbtc = await pool.getReserveData('0x5CAe380B9EC05556d5B0D90DcF39c4724DCEB670');
+  console.log(1111);
+  console.log(wbtc);
+
   const paused = await pool.paused();
   console.log('\n paused', paused);
 

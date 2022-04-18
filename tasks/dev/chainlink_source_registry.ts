@@ -40,6 +40,9 @@ task('dev:chainlink', 'Deploy and init chainlink source registry').setAction(
       chainlinkAggregators,
       poolConfig.OracleQuoteCurrency
     );
+    // add USD
+    tokens.push('0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96');
+    aggregators.push('0x190F924B4eF203597C93ad37bDE6b4e5b2671Df0');
 
     console.log('tokens');
     console.log(tokens);
