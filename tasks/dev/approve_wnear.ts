@@ -8,7 +8,7 @@ import { ERC20Factory } from '../../types';
 task('dev:approve', 'Approve WNEAR for incentive controller').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
   const signer = await getFirstSigner();
-  const totalSupply = ethers.utils.parseEther('1000000');
+  const totalSupply = ethers.utils.parseEther('1000000000000');
 
   console.log('signer', await signer.getAddress());
   console.log('signer balance');

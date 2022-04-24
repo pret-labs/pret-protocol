@@ -27,7 +27,9 @@ task('dev:transfer', 'Transfer coins').setAction(async ({}, localBRE) => {
     const token = mockTokens[t];
     let amount = ethers.utils.parseUnits('100');
     if (t === 'USDT' || t === 'USDC' || t === 'WBTC') {
-      amount = ethers.utils.parseUnits('0.1');
+      amount = ethers.utils.parseUnits('0.001');
+    } else if (t === 'WNEAR') {
+      amount = ethers.utils.parseUnits('10000000000000');
     }
 
     await waitForTx(

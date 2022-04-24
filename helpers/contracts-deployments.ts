@@ -487,7 +487,19 @@ export const deployAllMockTokens = async (verify?: boolean) => {
       continue;
     }
 
-    let decimals = tokenSymbol === 'USDT' || tokenSymbol === 'USDC' ? '6' : '18';
+    let decimals: string;
+    switch (tokenSymbol) {
+      case 'USDT':
+      case 'USDC':
+        decimals = '6';
+        break;
+      case 'WNEAR':
+        decimals = '24';
+        break;
+      default:
+        decimals = '18';
+        break;
+    }
     let configData = (<any>protoConfigData)[tokenSymbol];
 
     tokens[tokenSymbol] = await deployMintableERC20(

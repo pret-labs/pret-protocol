@@ -124,7 +124,7 @@ export const CommonsConfig: ICommonConfiguration = {
       USDC: '0xdD170e697d7ADed472a9284f07576c3449284502',
       USDT: '0x55b9eD56737B161677dC5146873E643647Ba5a43',
       WBTC: '0xBE46e430d336fC827d096Db044cBaEECE72e17bC',
-      USD: '0x5c8C275Bb70C66330F5f60E17530f37a50E6185E',
+      USD: '0x55b9eD56737B161677dC5146873E643647Ba5a43',
       WNEAR: '0x79c57C246794606c83AB32dc56e5cD2030FB552b',
       WETH: '0x842AF8074Fa41583E3720821cF1435049cf93565',
     },
@@ -138,19 +138,19 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0x38A2b3157d529c521814E88621fE938Be421A203',
+    [eAuroraNetwork.aurora]: '0xB8AD40DCfc163694F981D2e12704C0a7af9387DF',
     // [ePolygonNetwork.matic]: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0x38A2b3157d529c521814E88621fE938Be421A203',
+    [eAuroraNetwork.aurora]: '0xB8AD40DCfc163694F981D2e12704C0a7af9387DF',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0x114E314aED1dd117c2B91257AA52575331Ae2F95',
+    [eAuroraNetwork.aurora]: '0xaF8c605cc5b0845aD0885a55ED9cB412a75358aC',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x4081A1eedB4A1c65d175bF423755039827B4288A',
+    [eAuroraNetwork.aurora]: '0x853786cE2Ae0aB469e47D673EAFDD0C38FC61918',
   },
 };

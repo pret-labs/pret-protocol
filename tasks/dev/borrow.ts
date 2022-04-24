@@ -16,7 +16,7 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
 
   const mockTokens = await getAllMockedTokens();
   const token1 = mockTokens['DAI'];
-  const token2 = mockTokens['WNEAR'];
+  const token2 = mockTokens['DAI'];
   console.log('token1 address', token1.address);
   console.log('token2 address', token2.address);
 
