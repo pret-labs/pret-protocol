@@ -59,6 +59,9 @@ export const CommonsConfig: ICommonConfiguration = {
     WNEAR: {
       borrowRate: oneRay.multipliedBy(0.05).toFixed(),
     },
+    LINEAR: {
+      borrowRate: oneRay.multipliedBy(0.05).toFixed(),
+    },
     AURORA: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
@@ -126,6 +129,7 @@ export const CommonsConfig: ICommonConfiguration = {
       WBTC: '0xBE46e430d336fC827d096Db044cBaEECE72e17bC',
       USD: '0x55b9eD56737B161677dC5146873E643647Ba5a43',
       WNEAR: '0x79c57C246794606c83AB32dc56e5cD2030FB552b',
+      LINEAR: '0x79c57C246794606c83AB32dc56e5cD2030FB552b',
       WETH: '0x842AF8074Fa41583E3720821cF1435049cf93565',
     },
   },

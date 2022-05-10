@@ -12,6 +12,7 @@ import {
   rateStrategyUSDT,
   rateStrategyWBTC,
   rateStrategyWNEAR,
+  rateStrategyLINEAR,
 } from './rateStrategies';
 
 export const strategyDAI: IReserveParams = {
@@ -76,6 +77,18 @@ export const strategyWBTC: IReserveParams = {
 
 export const strategyWNEAR: IReserveParams = {
   strategy: rateStrategyWNEAR,
+  baseLTVAsCollateral: '6000',
+  liquidationThreshold: '6500',
+  liquidationBonus: '11000',
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: false,
+  reserveDecimals: '24',
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: '2000',
+};
+
+export const strategyLINEAR: IReserveParams = {
+  strategy: rateStrategyLINEAR,
   baseLTVAsCollateral: '6000',
   liquidationThreshold: '6500',
   liquidationBonus: '11000',

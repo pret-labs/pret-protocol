@@ -494,6 +494,7 @@ export const deployAllMockTokens = async (verify?: boolean) => {
         decimals = '6';
         break;
       case 'WNEAR':
+      case 'LINEAR':
         decimals = '24';
         break;
       default:

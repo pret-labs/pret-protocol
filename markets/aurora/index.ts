@@ -9,6 +9,7 @@ import {
   strategyWETH,
   strategyAURORA,
   strategyWNEAR,
+  strategyLINEAR,
 } from './reservesConfigs';
 
 // ----------------
@@ -26,6 +27,7 @@ export const AuroraConfig: IAuroraConfiguration = {
     WBTC: strategyWBTC,
     WETH: strategyWETH,
     WNEAR: strategyWNEAR,
+    LINEAR: strategyLINEAR,
     // AURORA: strategyAURORA,
   },
   // TODO aurora
@@ -36,6 +38,7 @@ export const AuroraConfig: IAuroraConfiguration = {
       USDT: '0xB7f348F0913FBc871B7E44C82aBB2d662F4c751a',
       WBTC: '0x7D99EdfE81833e371d007c57Cc9BF86bD719d60c',
       WETH: '0xB8AD40DCfc163694F981D2e12704C0a7af9387DF',
+      LINEAR: '0xB8AD40DCfc163694F981D2e12704C0a7af9387DF',
       WNEAR: '0x729dfF256Ba68502a17C1443B6F49c6B5300E95d',
     },
   },

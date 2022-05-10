@@ -223,6 +223,7 @@ export interface iAssetCommon<T> {
 }
 export interface iAssetBase<T> {
   WNEAR: T;
+  LINEAR: T;
   AURORA: T;
   WETH: T;
   DAI: T;
@@ -298,7 +299,7 @@ export type iAvalanchePoolAssets<T> = Pick<
 
 export type iAuroraPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  'WETH' | 'DAI' | 'USDT' | 'WBTC' | 'USDC' | 'WNEAR'
+  'WETH' | 'DAI' | 'USDT' | 'WBTC' | 'USDC' | 'WNEAR' | 'LINEAR'
 >;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;
@@ -310,6 +311,7 @@ export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 // remove unused tokens for aurora
 export enum TokenContractId {
   WNEAR = 'WNEAR',
+  LINEAR = 'LINEAR',
   AURORA = 'AURORA',
   DAI = 'DAI',
   // AAVE = 'AAVE',

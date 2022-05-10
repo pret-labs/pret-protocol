@@ -68,6 +68,17 @@ export const rateStrategyWNEAR: IInterestRateStrategyParams = {
   stableRateSlope2: '0',
 };
 
+// LINEAR
+export const rateStrategyLINEAR: IInterestRateStrategyParams = {
+  name: "rateStrategyLINEAR",
+  optimalUtilizationRate: new BigNumber(0.5).multipliedBy(oneRay).toFixed(),
+  baseVariableBorrowRate: new BigNumber(0).multipliedBy(oneRay).toFixed(),
+  variableRateSlope1: new BigNumber(0.08).multipliedBy(oneRay).toFixed(),
+  variableRateSlope2: new BigNumber(3).multipliedBy(oneRay).toFixed(),
+  stableRateSlope1: '0',
+  stableRateSlope2: '0',
+};
+
 // BUSD SUSD
 export const rateStrategyStableOne: IInterestRateStrategyParams = {
   name: "rateStrategyStableOne",
