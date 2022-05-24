@@ -9,10 +9,11 @@ The following components are required by AAVE, but not handled by this project.
 
 2. Deploy IncentivesController       
   https://github.com/pret-labs/incentives-controller/tree/aurora      
-  deploy: `npx hardhat --network aurora deploy-pull-rewards-incentives --token <addr> --vault <addr>`
-  Token address is WNEAR address, vault address is the account that holds all the incentives initially.
+  deploy: `npx hardhat --network aurora deploy:proxy --token1 --vault1 --token2 --vault2`
+  Token1 address is WNEAR address, vault address is the account that holds all the incentives initially.
+  Token2 address should be CORN address, but it will be generated later. So just put a random placeholder for now.
 
-3. Approve IncentivesController with all rewards token    
+3. Approve IncentivesController with all rewards token, call this twice, with token1/vault1 token2/vault2 respectively.    
   `CONTROLLER=xxx WNEAR=xxx npx hardhat --network aurora dev:approve`
 
 4. Price Oracles (optional)
@@ -37,6 +38,7 @@ The following components are required by AAVE, but not handled by this project.
 6. Delete all entries in `deployed-contracts.json`, if mock tokens are needed you can leave these entries there.
 7. `npm run aurora:full:migration`
 8. Grab aToken and vToken address from `npx hardhat --network aurora dev:info`, put into IncentivesController `config-incentives.ts`.
-9. Go to incentives controller and run `npx hardhat --network aurora config-assets --proxy <inc_ctrl_addr>`
-10. In order to use the protocol, the pool need to be unpaused:    
+9. Go to incentives controller and run `npx hardhat --network aurora config-assets --proxy <inc_ctrl_addr> --index 0/1` for each reward tokens respectively.
+10. Set CORN incentives controller unclaimable, remember to set it back when CORN token is actually deployed. ``
+11. In order to use the protocol, the pool need to be unpaused:    
   `npx hardhat --network aurora dev:unpause`

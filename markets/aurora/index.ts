@@ -37,7 +37,7 @@ export const AuroraConfig: IAuroraConfiguration = {
       USDC: '0xb12bfca5a55806aaf64e99521918a4bf0fc40802',
       USDT: '0x4988a896b1227218e4a686fde5eabdcabd91571f',
       WBTC: '0xf4eb217ba2454613b15dbdea6e5f22276410e89e',
-      WETH: '0xB8AD40DCfc163694F981D2e12704C0a7af9387DF',
+      WETH: '0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB',
       LINEAR: '0x918dbe087040a41b786f0da83190c293dae24749',
       WNEAR: '0xC42C30aC6Cc15faC9bD938618BcaA1a1FaE8501d',
     },

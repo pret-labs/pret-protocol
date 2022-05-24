@@ -52,6 +52,7 @@ task('dev:borrow', 'Simple Borrow flow').setAction(async ({}, localBRE) => {
     })
   );
   console.log('user1 deposited DAI');
+  return;
 
   // user 2 approve
   await waitForTx(await token2.connect(user2).approve(lendingPool.address, user2DepositAmount));
