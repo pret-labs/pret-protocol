@@ -16,11 +16,11 @@ task('dev:info', 'Show user and reserve info').setAction(async ({}, localBRE) =>
   await localBRE.run('set-DRE');
   const signer0 = await getSigner(0);
   const signer1 = await getSigner(1);
-  const pool = await getLendingPool();
 
   console.log(`Signer 0 addr: ${await signer0.getAddress()}`);
   console.log(`Signer 1 addr: ${await signer1.getAddress()}`);
 
+  const pool = await getLendingPool();
   const reservesList = await pool.getReservesList();
   console.log('reservesList', reservesList);
 

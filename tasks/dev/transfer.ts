@@ -25,12 +25,8 @@ task('dev:transfer', 'Transfer coins').setAction(async ({}, localBRE) => {
 
   for (const t of tokenList) {
     const token = mockTokens[t];
-    let amount = ethers.utils.parseUnits('100');
-    if (t === 'USDT' || t === 'USDC' || t === 'WBTC') {
-      amount = ethers.utils.parseUnits('0.001');
-    } else if (t === 'WNEAR') {
-      amount = ethers.utils.parseUnits('10000000000000');
-    }
+    const decimals = BigInt(await token.decimals());
+    const amount = BigInt(10000) * BigInt(10) ** decimals;
 
     await waitForTx(
       await token.connect(signer).transfer(receipt, amount, {
