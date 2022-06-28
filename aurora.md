@@ -39,6 +39,7 @@ The following components are required by AAVE, but not handled by this project.
 7. `npm run aurora:full:migration`
 8. Grab aToken and vToken address from `npx hardhat --network aurora dev:info`, put into IncentivesController `config-incentives.ts`.
 9. Go to incentives controller and run `npx hardhat --network aurora config-assets --proxy <inc_ctrl_addr> --index 0/1` for each reward tokens respectively.
-10. Set CORN incentives controller unclaimable, remember to set it back when CORN token is actually deployed. ``
-11. In order to use the protocol, the pool need to be unpaused:    
+10. Set WNEAR incentives controller claimable. `npx hardhat --network aurora set-claimable --proxy <addr>`
+11. Set CORN incentives controller unclaimable, remember to set it back when CORN token is actually deployed. ``
+12. In order to use the protocol, the pool need to be unpaused:    
   `npx hardhat --network aurora dev:unpause`

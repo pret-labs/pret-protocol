@@ -27,5 +27,6 @@ task('dev:approve', 'Approve WNEAR for incentive controller').setAction(async ({
   const token = await ERC20Factory.connect(wnear, signer);
 
   await waitForTx(await token.connect(signer).approve(controller, totalSupply));
+  console.log('signer', await signer.getAddress());
   console.log(`Approved ${totalSupply.toString()} WNEAR to incentive controller`);
 });

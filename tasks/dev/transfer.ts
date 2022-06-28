@@ -10,13 +10,22 @@ import { waitForTx } from '../../helpers/misc-utils';
 
 task('dev:transfer', 'Transfer coins').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
+
+  const signer = await getSigner(0);
+  console.log('signer', await signer.getAddress());
+
+  // await signer.sendTransaction({
+  //   to: '0xA65D546c5f5C8dac603211b7FcF3b1dF7e119E42',
+  //   value: ethers.utils.parseEther('100')
+  // });
+  // console.log('eth');
+
   const mockTokens = await getAllMockedTokens();
-  const tokenList = ['DAI', 'USDT', 'USDC', 'WNEAR', 'WBTC', 'WETH'];
+  const tokenList = ['DAI', 'LINEAR', 'USDT', 'USDC', 'WNEAR', 'WBTC', 'WETH'];
 
   const weth = await getWETHMocked();
   mockTokens['WETH'] = weth as any;
 
-  const signer = await getSigner(0);
   const receipt = process.env.RECEIPT;
   if (!receipt) {
     console.log('missing receipt in env');
