@@ -29,7 +29,7 @@ The following components are required by AAVE, but not handled by this project.
    `npx hardhat --network aurora dev:collector`      
 
 ### B. Deploy Pret (AAVE)
-1. Update IncentivesController address in `markets/aurora/commons.ts`
+1. Update IncentivesController address in `markets/aurora/commons.ts` with the new controller proxy address.
 2. Update price oracle addresses in `markets/aurora/commons.ts`
 3. Update ETH price oracle address in `helpers/constants.ts`
 3. Update reserve assets addresses in `markets/aurora/index.ts`
@@ -39,7 +39,7 @@ The following components are required by AAVE, but not handled by this project.
 7. `npm run aurora:full:migration`
 8. Grab aToken and vToken address from `npx hardhat --network aurora dev:info`, put into IncentivesController `config-incentives.ts`.
 9. Go to incentives controller and run `npx hardhat --network aurora config-assets --proxy <inc_ctrl_addr> --index 0/1` for each reward tokens respectively.
-10. Set WNEAR incentives controller claimable. `npx hardhat --network aurora set-claimable --proxy <addr>`
-11. Set CORN incentives controller unclaimable, remember to set it back when CORN token is actually deployed. ``
+10. Set both incentives controllers claimable. `npx hardhat --network aurora set-claimable --proxy <addr>`
+11. Set reward tokens for incentives controllers. `npx hardhat --network aurora set-token --token --proxy `
 12. In order to use the protocol, the pool need to be unpaused:    
   `npx hardhat --network aurora dev:unpause`
