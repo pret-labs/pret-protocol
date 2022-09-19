@@ -14,7 +14,7 @@ const gasPrice = 0 * GWEI;
 task('dev:mint', 'Mint some stable coins').setAction(async ({}, localBRE) => {
   await localBRE.run('set-DRE');
   const mockTokens = await getAllMockedTokens();
-  const mintList = ['DAI', 'LINEAR', 'USDT', 'USDC', 'WNEAR', 'WBTC', 'WETH'];
+  const mintList = ['DAI', 'LINEAR', 'AURORA', 'USDT', 'USDC', 'WNEAR', 'WBTC', 'WETH'];
 
   // WETH
   const weth = await getWETHMocked();

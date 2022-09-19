@@ -7,6 +7,8 @@ import {IERC20Detailed} from '../../dependencies/openzeppelin/contracts/IERC20De
 import {SafeMath} from '../../dependencies/openzeppelin/contracts/SafeMath.sol';
 import {IAaveIncentivesController} from '../../interfaces/IAaveIncentivesController.sol';
 
+import 'hardhat/console.sol';
+
 /**
  * @title ERC20
  * @notice Basic ERC20 implementation
@@ -69,10 +71,10 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
   }
 
   /**
-   * @return Abstract function implemented by the child aToken/debtToken. 
+   * @return Abstract function implemented by the child aToken/debtToken.
    * Done this way in order to not break compatibility with previous versions of aTokens/debtTokens
    **/
-  function _getIncentivesController() internal view virtual returns(IAaveIncentivesController);
+  function _getIncentivesController() internal view virtual returns (IAaveIncentivesController);
 
   /**
    * @dev Executes a transfer of tokens from _msgSender() to recipient
@@ -203,6 +205,10 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
     _balances[account] = oldAccountBalance.add(amount);
 
     if (address(_getIncentivesController()) != address(0)) {
+      console.log('AToken ic is', address(_getIncentivesController()));
+      console.log('account', account);
+      console.log('old total supply', oldTotalSupply);
+      console.log('old acc bal', oldAccountBalance);
       _getIncentivesController().handleAction(account, oldTotalSupply, oldAccountBalance);
     }
   }

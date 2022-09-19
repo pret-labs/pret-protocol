@@ -16,16 +16,18 @@ The following components are required by AAVE, but not handled by this project.
 3. Approve IncentivesController with all rewards token, call this twice, with token1/vault1 token2/vault2 respectively.    
   `CONTROLLER=xxx WNEAR=xxx npx hardhat --network aurora dev:approve`
 
-4. Price Oracles (optional)
+4. Set reward tokens for incentives controllers. `npx hardhat --network aurora set-token --token --proxy `
+
+5. Price Oracles (optional)
   https://github.com/pret-labs/price-oracle              
   See readme for instructions.
 
-5. Run Price Oracle Nodes (optional)        
+6. Run Price Oracle Nodes (optional)        
   Update `appconfig.js` with oracle addresses above     
   https://github.com/pret-labs/oracle-provider-node       
   run: `npm run start`
 
-6. Deploy AaveCollector
+7. Deploy AaveCollector
    `npx hardhat --network aurora dev:collector`      
 
 ### B. Deploy Pret (AAVE)
@@ -40,6 +42,5 @@ The following components are required by AAVE, but not handled by this project.
 8. Grab aToken and vToken address from `npx hardhat --network aurora dev:info`, put into IncentivesController `config-incentives.ts`.
 9. Go to incentives controller and run `npx hardhat --network aurora config-assets --proxy <inc_ctrl_addr> --index 0/1` for each reward tokens respectively.
 10. Set both incentives controllers claimable. `npx hardhat --network aurora set-claimable --proxy <addr>`
-11. Set reward tokens for incentives controllers. `npx hardhat --network aurora set-token --token --proxy `
 12. In order to use the protocol, the pool need to be unpaused:    
   `npx hardhat --network aurora dev:unpause`

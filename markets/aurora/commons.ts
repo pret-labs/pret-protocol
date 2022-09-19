@@ -124,12 +124,12 @@ export const CommonsConfig: ICommonConfiguration = {
   ChainlinkAggregator: {
     [eAuroraNetwork.aurora]: {
       // DAI: '0x18aFC38b25229B797E2af47b5056A5f98249Ef12',
-      USDC: '0x06b35392094610C8D21FB2409855e231869B287F',
-      USDT: '0x5c8C275Bb70C66330F5f60E17530f37a50E6185E',
+      USDC: '0x5Ae76BDd0Eb65aa07f08768F33ac7C7A170e8666',
+      USDT: '0x71138Acf860ca70D8843f7Ed98CE9Ed957b6b10c',
       // WBTC: '0x27C85E3DE52582FB049152F0a41a03f93d6D86c2',
-      USD: '0x5c8C275Bb70C66330F5f60E17530f37a50E6185E',
-      WNEAR: '0x0a9A9cF9bDe10c861Fc1e45aCe4ea097eaa268eD',
-      LINEAR: '0x2eBf49106814Fcd8685ed6c8a7315Ca528CdA232',
+      USD: '0x3e9dd45050475fB75494De2217056dB5a54d5299',
+      WNEAR: '0x6729D1b8C4587Ca784a4d91ab01F678e7980ed07',
+      LINEAR: '0x6729D1b8C4587Ca784a4d91ab01F678e7980ed07',
       // WETH: '0xA8Ac2Fa1D239c7d96046967ED21503D1F1fB2354',
     },
   },
@@ -142,18 +142,18 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0xD6B7C7811CA83E1034D59964430DacdAd3B4D529',
+    [eAuroraNetwork.aurora]: '0x7DCabc4d0f82299637F38Ed2703bA6144e9355cC',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0xD6B7C7811CA83E1034D59964430DacdAd3B4D529',
+    [eAuroraNetwork.aurora]: '0x7DCabc4d0f82299637F38Ed2703bA6144e9355cC',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0x50C0CFB03A9f958c0d4B483604f45000F2A6d5Ff',
+    [eAuroraNetwork.aurora]: '0x1dd4e0D3b0Bf82BA75f3124e21bDeef02Ff073dA',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x15eFDc56D3e8056C86ce54120392383361d57B1a',
+    [eAuroraNetwork.aurora]: '0x543B666128Dc017EA2a4260b24d5014F218b1d10',
   },
 };
