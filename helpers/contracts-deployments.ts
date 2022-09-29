@@ -481,7 +481,7 @@ export const deployAllMockTokens = async (verify?: boolean) => {
 
   const protoConfigData = getReservesConfigByPool(AavePools.proto);
 
-  for (const tokenSymbol of Object.keys(TokenContractId)) {
+  for (const tokenSymbol of Object.keys(TokenContractId).concat('CORN')) {
     // skip WETH
     if (tokenSymbol === 'WETH') {
       continue;

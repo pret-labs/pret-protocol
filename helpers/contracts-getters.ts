@@ -190,6 +190,7 @@ export const getMockedTokens = async (config: PoolConfiguration) => {
 export const getAllMockedTokens = async () => {
   const db = getDb();
   const tokens: MockTokenMap = await Object.keys(TokenContractId)
+    .concat('CORN')
     .filter((s) => s !== 'WETH')
     .reduce<Promise<MockTokenMap>>(async (acc, tokenSymbol) => {
       const accumulator = await acc;

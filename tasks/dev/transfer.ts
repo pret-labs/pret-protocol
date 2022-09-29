@@ -35,7 +35,7 @@ task('dev:transfer', 'Transfer coins').setAction(async ({}, localBRE) => {
   for (const t of tokenList) {
     const token = mockTokens[t];
     const decimals = BigInt(await token.decimals());
-    const amount = BigInt(10000) * BigInt(10) ** decimals;
+    const amount = BigInt(100000) * BigInt(10) ** decimals;
 
     await waitForTx(
       await token.connect(signer).transfer(receipt, amount, {

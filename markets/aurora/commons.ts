@@ -142,18 +142,18 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   // TODO aurora
   WETH: {
-    [eAuroraNetwork.aurora]: '0x7DCabc4d0f82299637F38Ed2703bA6144e9355cC',
+    [eAuroraNetwork.aurora]: '0x8a7631B10c968a8891cC4196EE9Ecc5ed0b52e8B',
   },
   // TODO aurora
   WrappedNativeToken: {
-    [eAuroraNetwork.aurora]: '0x7DCabc4d0f82299637F38Ed2703bA6144e9355cC',
+    [eAuroraNetwork.aurora]: '0x8a7631B10c968a8891cC4196EE9Ecc5ed0b52e8B',
   },
   // TODO aurora
   ReserveFactorTreasuryAddress: {
-    [eAuroraNetwork.aurora]: '0x1dd4e0D3b0Bf82BA75f3124e21bDeef02Ff073dA',
+    [eAuroraNetwork.aurora]: '0xB296bDe251703472939ab19874105fad1C8A138b',
   },
   // TODO aurora
   IncentivesController: {
-    [eAuroraNetwork.aurora]: '0x543B666128Dc017EA2a4260b24d5014F218b1d10',
+    [eAuroraNetwork.aurora]: '0x074a2cAed8b386D67A2A50d2Df9bd4DB661872c2',
   },
 };

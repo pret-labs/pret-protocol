@@ -30,7 +30,7 @@ task('dev:mint', 'Mint some stable coins').setAction(async ({}, localBRE) => {
     const token = mockTokens[t];
 
     const decimals = BigInt(await token.decimals());
-    const amount = BigInt(1000000) * BigInt(10) ** decimals;
+    const amount = BigInt(10000000) * BigInt(10) ** decimals;
 
     console.log('token address', token.address);
     await waitForTx(
