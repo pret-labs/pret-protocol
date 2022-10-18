@@ -47,8 +47,8 @@ contract UiIncentiveDataProvider is IUiIncentiveDataProvider {
   ) private view returns (AggregatedReserveIncentiveData[] memory) {
     ILendingPool lendingPool = ILendingPool(provider.getLendingPool());
     address[] memory reserves = lendingPool.getReservesList();
-    AggregatedReserveIncentiveData[] memory reservesIncentiveData =
-      new AggregatedReserveIncentiveData[](reserves.length);
+    AggregatedReserveIncentiveData[]
+      memory reservesIncentiveData = new AggregatedReserveIncentiveData[](reserves.length);
 
     for (uint256 i = 0; i < reserves.length; i++) {
       AggregatedReserveIncentiveData memory reserveIncentiveData = reservesIncentiveData[i];
@@ -229,8 +229,9 @@ contract UiIncentiveDataProvider is IUiIncentiveDataProvider {
     ILendingPool lendingPool = ILendingPool(provider.getLendingPool());
     address[] memory reserves = lendingPool.getReservesList();
 
-    UserReserveIncentiveData[] memory userReservesIncentivesData =
-      new UserReserveIncentiveData[](user != address(0) ? reserves.length : 0);
+    UserReserveIncentiveData[] memory userReservesIncentivesData = new UserReserveIncentiveData[](
+      user != address(0) ? reserves.length : 0
+    );
 
     for (uint256 i = 0; i < reserves.length; i++) {
       DataTypes.ReserveData memory baseData = lendingPool.getReserveData(reserves[i]);
@@ -318,5 +319,40 @@ contract UiIncentiveDataProvider is IUiIncentiveDataProvider {
     }
 
     return (userReservesIncentivesData);
+  }
+
+  // Get the following info about CORN progressive rewards for all assets:
+  //   - total rewards: total granted (including claimed)
+  //   - pending rewards: granted but not yet distributed (not claimable)
+  //   - claimable rewards: current claimable
+  function getProgressiveIncentivesData(
+    ILendingPoolAddressesProvider provider,
+    address user,
+    IAaveIncentivesController incentivesController
+  )
+    external
+    view
+    returns (
+      uint256,
+      uint256,
+      uint256
+    )
+  {
+    ILendingPool lendingPool = ILendingPool(provider.getLendingPool());
+    address[] memory reserves = lendingPool.getReservesList();
+
+    address[] memory assets = new address[](2 * reserves.length);
+
+    for (uint256 i = 0; i < reserves.length; i++) {
+      DataTypes.ReserveData memory baseData = lendingPool.getReserveData(reserves[i]);
+
+      address aTokenAddress = baseData.aTokenAddress;
+      address vTokenAddress = baseData.variableDebtTokenAddress;
+
+      assets[2 * i] = aTokenAddress;
+      assets[2 * i + 1] = vTokenAddress;
+    }
+
+    return incentivesController.getProgressiveRewardsInfo(assets, user);
   }
 }

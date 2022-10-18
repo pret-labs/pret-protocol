@@ -131,6 +131,15 @@ interface IAaveIncentivesController {
    */
   function getUserAssetData(address user, address asset) external view returns (uint256);
 
+  function getProgressiveRewardsInfo(address[] calldata assets, address user)
+    external
+    view
+    returns (
+      uint256,
+      uint256,
+      uint256
+    );
+
   /**
    * @dev for backward compatibility with previous implementation of the Incentives controller
    */
