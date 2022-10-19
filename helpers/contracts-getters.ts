@@ -34,6 +34,8 @@ import {
   WETHGatewayFactory,
   FlashLiquidationAdapterFactory,
   UiPoolDataProviderFactory,
+  UiIncentiveDataProvider,
+  UiIncentiveDataProviderFactory,
 } from '../types';
 import { IERC20DetailedFactory } from '../types/IERC20DetailedFactory';
 import { getEthersSigners, MockTokenMap } from './contracts-helpers';
@@ -79,6 +81,14 @@ export const getUiPoolDataProvider = async () =>
   await UiPoolDataProviderFactory.connect(
     (
       await getDb().get(`${eContractid.UiPoolDataProvider}.${DRE.network.name}`).value()
+    ).address,
+    await getFirstSigner()
+  );
+
+export const getUiIncentiveDataProvider = async () =>
+  await UiIncentiveDataProviderFactory.connect(
+    (
+      await getDb().get(`${eContractid.UiIncentiveDataProvider}.${DRE.network.name}`).value()
     ).address,
     await getFirstSigner()
   );
