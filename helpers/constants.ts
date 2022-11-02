@@ -87,7 +87,7 @@ export const chainlinkAggregatorProxy = {
   avalanche: '0x0A77230d17318075983913bC2145DB16C7366156',
   fuji: '0x5498BB86BC934c8D34FDA08E81D444153d0D06aD',
   tenderly: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419',
-  aurora: '0x5A57697906C036eA4e07509fcc7E8990da6650e5',
+  aurora: '0xA8Ac2Fa1D239c7d96046967ED21503D1F1fB2354',
   hardhat: '0x',
 };
 
@@ -99,6 +99,6 @@ export const chainlinkEthUsdAggregatorProxy = {
   avalanche: '0x976B3D034E162d8bD72D6b9C989d545b839003b0',
   fuji: '0x86d67c3D38D2bCeE722E601025C25a575021c6EA',
   tenderly: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419',
-  aurora: '0x5A57697906C036eA4e07509fcc7E8990da6650e5',
+  aurora: '0xA8Ac2Fa1D239c7d96046967ED21503D1F1fB2354',
   hardhat: '0x',
 };

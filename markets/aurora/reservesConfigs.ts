@@ -84,7 +84,7 @@ export const strategyWNEAR: IReserveParams = {
   stableBorrowRateEnabled: false,
   reserveDecimals: '24',
   aTokenImpl: eContractid.AToken,
-  reserveFactor: '2000',
+  reserveFactor: '2500',
 };
 
 export const strategyLINEAR: IReserveParams = {
@@ -96,7 +96,7 @@ export const strategyLINEAR: IReserveParams = {
   stableBorrowRateEnabled: false,
   reserveDecimals: '24',
   aTokenImpl: eContractid.AToken,
-  reserveFactor: '2000',
+  reserveFactor: '2500',
 };
 
 export const strategyMATIC: IReserveParams = {

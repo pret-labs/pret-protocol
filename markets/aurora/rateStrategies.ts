@@ -60,10 +60,10 @@ export const rateStrategyWBTC: IInterestRateStrategyParams = {
 // WNEAR
 export const rateStrategyWNEAR: IInterestRateStrategyParams = {
   name: "rateStrategyWNEAR",
-  optimalUtilizationRate: new BigNumber(0.5).multipliedBy(oneRay).toFixed(),
+  optimalUtilizationRate: new BigNumber(0.65).multipliedBy(oneRay).toFixed(),
   baseVariableBorrowRate: new BigNumber(0).multipliedBy(oneRay).toFixed(),
   variableRateSlope1: new BigNumber(0.08).multipliedBy(oneRay).toFixed(),
-  variableRateSlope2: new BigNumber(3).multipliedBy(oneRay).toFixed(),
+  variableRateSlope2: new BigNumber(1).multipliedBy(oneRay).toFixed(),
   stableRateSlope1: '0',
   stableRateSlope2: '0',
 };
@@ -71,10 +71,10 @@ export const rateStrategyWNEAR: IInterestRateStrategyParams = {
 // LINEAR
 export const rateStrategyLINEAR: IInterestRateStrategyParams = {
   name: "rateStrategyLINEAR",
-  optimalUtilizationRate: new BigNumber(0.5).multipliedBy(oneRay).toFixed(),
+  optimalUtilizationRate: new BigNumber(0.65).multipliedBy(oneRay).toFixed(),
   baseVariableBorrowRate: new BigNumber(0).multipliedBy(oneRay).toFixed(),
-  variableRateSlope1: new BigNumber(0.08).multipliedBy(oneRay).toFixed(),
-  variableRateSlope2: new BigNumber(3).multipliedBy(oneRay).toFixed(),
+  variableRateSlope1: new BigNumber(0.07).multipliedBy(oneRay).toFixed(),
+  variableRateSlope2: new BigNumber(1).multipliedBy(oneRay).toFixed(),
   stableRateSlope1: '0',
   stableRateSlope2: '0',
 };
